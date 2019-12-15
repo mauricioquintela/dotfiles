@@ -1,0 +1,12 @@
+#!/bin/bash
+
+physlock -d -p "This computer is locked!
+
+Go away! 
+
+Good luck unlocking it!
+
+And no, switching to a different tty does not work...
+
+"
+
