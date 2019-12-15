@@ -130,7 +130,7 @@ alias :q='exit'
 alias stahp='~/HDD/git/stahp'
 
 alias config='vim $(find ~/.config/ranger/* ~/.config/polybar/* ~/.config/qutebrowser/* ~/.config/i3/* -type f | fzf)'
-alias confgit='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
+alias cgit='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
 
 alias tlpstart='sudo tlpui && sudo tlp start'
 
