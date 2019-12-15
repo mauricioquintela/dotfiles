@@ -1,0 +1,66 @@
+-----------------------------------------------------------
+-- cfpposter: cfp's style file for LaTeX class a0poster. --
+-----------------------------------------------------------
+
+***********************************************************
+* INSTALLATION:
+***********************************************************
+
+To install just copy the folder "cfpposter" into some directory
+that LaTeX knows about in your system. There are several ways,
+but I suggest either of the following:
+
+1. [Any User]
+   Copy the folder cfpposter to ~/texmf/tex/latex/ (this is a path
+   relative to your home directory; create the parent directories 
+   as needed) and run the command "mktexlsr"
+   at any terminal.
+
+2. [Any User]
+   Copy only the file "cfpposter.sty" into the same folder where you
+   have a *.tex document you want to compile with this style.
+
+3. [As root] 
+   Copy the folder "cfpposter" to "/usr/share/texmf/tex/latex/" and 
+   then run the command "mktexlsr".
+
+In the subfolder "Example" exists an example file "poster.tex"
+that should guide you in building your own presentation.
+You can compile this example by issuing inside the "Example" directory:
+
+$ latex poster
+$ bibtex poster
+$ latex poster
+$ latex poster
+$ latex poster
+
+... and then generate a PostScript by doing:
+
+$ dvips -Ppdf -t a0 poster.dvi -o poster.ps
+
+... if you want a PDF in the end:
+
+$ ps2pdf poster.ps poster.pdf
+
+You can generate a PDF file directly from the DVI using:
+
+$ dvipdf poster.dvi poster.pdf
+
+If you have a standard LaTeX installation, this example
+should compile smoothly without any error!
+
+***********************************************************
+* IMPORTANT NOTICE: 
+***********************************************************
+
+Before starting, please be aware that this style file
+only works in conjunction with the LaTeX document class 
+"a0poster". So, if this class is not part of your TeX
+installation yet, you should install it and test it before
+trying to set up "cfpposter".
+
+***********************************************************
+* COMMENTS AND SUGGESTIONS
+***********************************************************
+Suggestions and improvements are very welcome. 
+Here's my email: vmpereir [at] fc [dot] up [dot] pt

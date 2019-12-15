@@ -1,0 +1,443 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  $RCSfile: cfpposter.sty,v $
+%%  $Author: vpereira $
+%%  $Date: 2008/01/08 20:44:05 $
+%%  $Revision: 1.8 $
+%%
+%%  Description:        LaTeX2e style file for Centro de Fisica do Porto
+%%                      A0 academic posters.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is a style file for A0 academic posters, to be used in
+% conjunction with the a0poster document class. 
+% Only Portrait mode is currently supported.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Requirements:
+%   
+%   - LaTeX2e ;-)
+%   - LaTeX packages: pstricks, graphics, a0paper, multicol, times
+%   
+%   (All but a0paper should be available in a standard LaTeX installation)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Package options:
+%
+% None yet, but I will implement some class options later.
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% -------------------------------------------------------------------
+% Required Packages
+% -------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\RequirePackage{calc}
+\setlength{\unitlength}{1cm}
+\RequirePackage{color}
+\RequirePackage{ifthen}
+\RequirePackage{graphicx}
+\RequirePackage[a0paper,top=3\unitlength,left=4\unitlength,centering]{geometry}
+\RequirePackage{pstricks}
+\RequirePackage{pst-blur}
+% -------------------------------------------------------------------
+% Color Definitions (RGB)
+% -------------------------------------------------------------------
+\newrgbcolor{CFPBlue}{0.298 0.322 0.447}
+\newrgbcolor{CFPOrange}{0.918 0.765 0.486}
+\newrgbcolor{CFPGray}{0.812 0.780 0.710}
+\newrgbcolor{DarkBlue}{0.24 0.29 0.51}
+\newrgbcolor{LightBlue}{0.88 0.90 0.94}
+\newrgbcolor{DarkGolden}{0.72 0.52 0.04}
+\newrgbcolor{DarkGreen}{0 0.376 0}
+\newrgbcolor{LightGreen}{0.898039 0.937255 0.898039}
+\newrgbcolor{FlashGreen}{0 1 0}
+\newrgbcolor{DarkRed}{0.75 0 0}
+\newrgbcolor{LightRed}{0.976 0.9 0.9}
+\newrgbcolor{DarkGray}{0.34 0.34 0.34}
+\newrgbcolor{LightGray}{0.86 0.86 0.86}
+\newrgbcolor{Yellow}{1 0.95 0}
+\newrgbcolor{DarkYellow}{0.95 0.686 0.07}
+\newrgbcolor{Salmon}{1.0 0.92 0.79}
+\newrgbcolor{Whitish}{1.0 1.0 0.84}
+\newrgbcolor{Brown}{0.47 0.27 0.015}
+% -------------------------------------------------------------------
+% Color Choices (RGB)
+% -------------------------------------------------------------------
+\newcommand{\PaperColor}{white}
+\newcommand{\BoxShadowColor}{gray}
+\newcommand{\TitleTextColor}{white}
+\newcommand{\TitleFillColor}{CFPBlue}
+\newcommand{\SectionHeadFillColor}{CFPOrange}
+\newcommand{\SubSectionHeadFillColor}{LightBlue}
+\newcommand{\FancyBoxFillColor}{Yellow}
+\newcommand{\MainTextColor}{black}
+\newcommand{\AuthorTextColor}{black}
+\newcommand{\AffiliationTextColor}{black}
+\newcommand{\FootFillColor}{CFPBlue}
+% -------------------------------------------------------------------
+% Styles 
+% -------------------------------------------------------------------
+\newcommand{\TitleStyle}{\Mega \sffamily \color{\TitleTextColor}}
+\newcommand{\AuthorStyle}{\Huge \color{\AuthorTextColor}}
+\newcommand{\AffiliationStyle}{\LARGE \color{\AffiliationTextColor}}
+\newcommand{\EmailStyle}{\itshape \sffamily \Large}
+\newcommand{\ThanksStyle}{\bfseries \sffamily \white}
+\newcommand{\MainTextStyle}{\large \rmfamily \mdseries \color{\MainTextColor}}
+\newcommand{\SectionHeadStyle}{\Large \bf \sffamily \CFPBlue}
+\newcommand{\SectionTextStyle}{\MainTextStyle}
+\newcommand{\SubSectionHeadStyle}{\large \bf \sffamily \DarkBlue}
+\newcommand{\SubSectionTextStyle}{\SectionTextStyle}
+\newcommand{\EquationStyle}{\DarkGreen}
+\newcommand{\CaptionStyle}{\Brown \large}
+\newcommand{\BibliographyStyle}{\small \DarkGray}
+
+% -------------------------------------------------------------------
+% Constant Variables:
+% -------------------------------------------------------------------
+\newcommand{\cfpaddress}{
+  CFP and Departamento de F{\'\i}sica, 
+  Faculdade de Ci{\^e}ncias
+  Universidade do Porto, 
+  4169-007 Porto, 
+  Portugal
+}
+
+% -------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -------------------------------------------------------------------
+%
+%                      ***** WARNING *****
+%
+%              Don't change anything below these lines, 
+%               unless you know what you are doing!
+%
+% -------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -------------------------------------------------------------------
+
+
+% -------------------------------------------------------------------
+% New Fonts
+% -------------------------------------------------------------------
+\newcommand{\Mega}{\fontsize{80}{100}\selectfont}
+
+% -------------------------------------------------------------------
+% Generic Measurements:
+% -------------------------------------------------------------------
+% Header:
+\newlength{\TitleBorderSkip}
+\setlength{\TitleBorderSkip}{-1\unitlength}
+\newlength{\HeaderBodySep}
+\setlength{\HeaderBodySep}{2\unitlength}
+% Section Environment Stuff:
+\newlength{\sectitleskip}
+\setlength{\sectitleskip}{0\unitlength}
+\newlength{\sectiltebordertop}
+\setlength{\sectiltebordertop}{-1.5\unitlength}
+\newlength{\sectilteborderbottom}
+\setlength{\sectilteborderbottom}{-0.8\unitlength}
+\newlength{\sectitleTextSkip}
+\setlength{\sectitleTextSkip}{2\unitlength}
+% Subection Environment Stuff:
+\newlength{\subsectitleskip}
+\setlength{\subsectitleskip}{0\unitlength}
+\newlength{\subsectilteborder}
+\setlength{\subsectilteborder}{0\unitlength}
+\newlength{\subsectitleTextSkip}
+\setlength{\subsectitleTextSkip}{0\unitlength}
+% Fancy Box
+\newlength{\FancyBoxMargin}
+\setlength{\FancyBoxMargin}{.5\unitlength}
+% Outter Frame:
+\newlength{\OutFrameWidth}
+\setlength{\OutFrameWidth}{\textwidth}
+\addtolength{\OutFrameWidth}{2\unitlength}
+\newlength{\OutFrameHeight}
+\setlength{\OutFrameHeight}{\textheight}
+\addtolength{\OutFrameHeight}{2\unitlength}
+% pstricks:
+\psset{unit=1cm}
+\psset{shadowsize=0.5}
+% Multicols Package:
+\setlength{\columnsep}{3\unitlength}
+\setlength{\columnseprule}{0.1\unitlength}
+% Other
+\setlength{\parindent}{0\unitlength}
+\setlength{\parskip}{0.5\unitlength}
+
+% -------------------------------------------------------------------
+% Section and Subsection
+% -------------------------------------------------------------------
+
+\def\Wsection{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\hspace*{1em}\SectionHeadStyle}}
+
+\def\Wsubsection{\@startsection{subsection}{2}{\z@}%
+                                    {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                    {2ex \@plus .2ex}%
+                                    {\SubSectionHeadStyle}}
+
+\renewcommand{\section}[1]{
+  \vspace{1\unitlength}
+  \par
+  \psblurbox*[framearc=.2,
+    linewidth=0.,
+    fillcolor=\SectionHeadFillColor,
+    shadow=true,
+    shadowcolor=\BoxShadowColor,
+    blurbg=\PaperColor,
+    blurradius=0.2]{  
+    \parbox[c]{0.97\columnwidth}{
+      \vspace*{\sectiltebordertop}
+      \SectionHeadStyle
+      \parbox[t]{0.85\columnwidth}{\Wsection{#1}} 
+      \vspace*{\sectilteborderbottom} 
+    }
+  }
+  \vspace{\sectitleskip}
+  \par
+  \SectionTextStyle
+}
+
+\renewcommand{\subsection}[1]{
+  \vspace{0.5\unitlength}
+  \par
+  \psblurbox*[framearc=.2,
+    linewidth=0.,
+    fillcolor=\SubSectionHeadFillColor,
+    shadow=true,
+    shadowcolor=\BoxShadowColor,
+    blurbg=\PaperColor,
+    blurradius=0.2]{  
+    \parbox[c]{0.97\columnwidth}{
+      \vspace*{\sectiltebordertop}
+      \SectionHeadStyle
+      \parbox[t]{0.85\columnwidth}{\Wsubsection{#1}}
+      \vspace*{\sectilteborderbottom} 
+    }
+  }
+  \vspace{\sectitleskip}
+  \par
+  \SubSectionTextStyle
+}
+
+% -------------------------------------------------------------------
+% Bibliography
+% -------------------------------------------------------------------
+% [Tive de mudar \section*{\refname} para \section{\refname} ]
+% [Tenho de ver como se pode criar um \section*{} porque o * n/ funciona assim.]
+\renewenvironment{thebibliography}[1]
+     {\section{\refname}%
+      \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \BibliographyStyle
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep 
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+
+
+% -------------------------------------------------------------------
+% Boxes
+% -------------------------------------------------------------------
+
+\newcommand{\FancyBox}[3][Yellow]{
+  \ifthenelse{\equal{#2}{Rounded}}
+    {
+      \psblurbox*[framearc=.2,
+        linewidth=0.,
+        fillcolor=#1,
+        framesep=\FancyBoxMargin,
+        shadowcolor=\BoxShadowColor,
+        blurbg=\PaperColor,
+        blurradius=0.2]{
+        \mbox{#3} 
+      }
+    }
+    {
+      \psblurbox*[linewidth=0.,
+        fillcolor=#1,
+        framesep=\FancyBoxMargin,
+        blurbg=\PaperColor,
+        blurradius=0.2]{
+          #3
+        }  
+    }
+}
+
+
+% -------------------------------------------------------------------
+% Equation Environment
+% -------------------------------------------------------------------
+
+\newenvironment{colorequation}
+{
+  \EquationStyle 
+  \begin{equation}
+}
+{
+  \end{equation}
+}
+
+
+% -------------------------------------------------------------------
+% Frames, Rulers, Boxes
+% -------------------------------------------------------------------
+
+\newcommand{\TextWideRule}{\TitleFillColor \rule{0.99\textwidth}{0.1\unitlength} \MainTextColor}
+
+% -------------------------------------------------------------------
+% HEADER Wrappers
+% -------------------------------------------------------------------
+
+\newcommand{\Wtitle}{}
+\newcommand{\Wauthor}{}
+\newcommand{\Waffiliation}{}
+\newcommand{\Wemail}{}
+\newcommand{\Wthanks}{}
+\renewcommand{\title}[1]{\renewcommand{\Wtitle}{#1}}
+\renewcommand{\author}[1]{\renewcommand{\Wauthor}{#1}}
+\newcommand{\affiliation}[1]{\renewcommand{\Waffiliation}{#1}}
+\newcommand{\email}[1]{\renewcommand{\Wemail}{#1}}
+\renewcommand{\thanks}[1]{\renewcommand{\Wthanks}{#1}}
+
+% -------------------------------------------------------------------
+% HEADER
+% -------------------------------------------------------------------
+
+\newcommand{\makeheader}{
+% Outer Frame:
+%\psframe[linewidth=1mm,linecolor=red,framearc=0.02](-2\unitlength,2\unitlength)(\OutFrameWidth,-\OutFrameHeight)
+\begin{center}
+  % Title:
+  \vspace*{\TitleBorderSkip}
+  \ifthenelse{\equal{\Wtitle}{}}
+    {}
+    {
+      \psblurbox*[framearc=.2,
+        linewidth=0.,
+        fillcolor=\TitleFillColor,
+        shadowcolor=\BoxShadowColor,
+        blurbg=\PaperColor,
+        blurradius=0.2,
+        framesep=2]{
+        \begin{minipage}[c]{\textwidth - 4\unitlength}
+          \centering 
+          \TitleStyle \textbf{\Wtitle}
+        \end{minipage}
+      }
+    }
+  % Author:
+  \ifthenelse{\equal{\Wauthor}{}}
+    {}
+    { 
+      \begin{minipage}[c]{\textwidth}
+        \centering
+        \vspace*{2\unitlength}
+        \AuthorStyle
+        \Wauthor
+        \vspace*{1\unitlength}
+      \end{minipage}
+    }
+  % Affiliation:
+  \ifthenelse{\equal{\Waffiliation}{}}
+    {}
+    {
+      \begin{minipage}[c]{.15\textwidth}
+        \includegraphics*[width=1.2\textwidth]{Left_Logo.eps}
+      \end{minipage}
+      \hfill
+      \begin{minipage}[c]{0.6\textwidth}
+        \centering
+        \vspace*{.5\unitlength}
+        \AffiliationStyle \Waffiliation
+        \vspace*{.5\unitlength}
+      \end{minipage} 
+      \hfill
+      \begin{minipage}[c]{.15\textwidth}
+        \includegraphics[width=0.7\textwidth]{Right_Logo.eps}
+      \end{minipage} 
+    }
+  % Email:
+%   \ifthenelse{\equal{\Wemail}{}}
+%     {}
+%     {
+%       \parbox[c]{\textwidth}{
+%         \centering
+%         \vspace*{.5\unitlength}
+%         \EmailStyle 
+%         \Wemail
+%         \vspace*{.5\unitlength}
+%       } 
+%     }
+  % Bottom header sep. 
+  %\rule{.4\textwidth}{.1\unitlength}
+  \vspace*{\HeaderBodySep}
+\end{center}
+}
+
+\newcommand{\makefooter}{
+  \vfill
+  \psframebox*[framearc=.2,
+    linewidth=0.,
+    fillcolor=\FootFillColor,
+    shadow=true,
+    shadowcolor=gray,
+    blur=true,
+    framesep=0.2]{
+    \parbox[c]{\textwidth}{
+      \centering 
+      \small
+      \ifthenelse{\equal{\Wthanks}{}}
+      {~}
+      {
+        \ThanksStyle 
+        \Wthanks
+      } 
+    }
+  }
+}
+
+% -------------------------------------------------------------------
+% FIGURE ENVIRONMENT
+% -------------------------------------------------------------------
+\newcounter{figcount}
+\renewcommand{\caption}[1]{
+  \par
+  { \CaptionStyle
+    \textbf{Fig.~\arabic{figcount}:} #1
+  }
+}
+\renewenvironment{figure}{%
+  \refstepcounter{figcount}%
+  \par%
+%   \begin{center}%
+}
+{
+% \end{center}
+\par
+}
+
+% -------------------------------------------------------------------
+% That's it. Let's move on
+% -------------------------------------------------------------------
+\pagecolor{\PaperColor}
+\MainTextStyle
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
