@@ -1,0 +1,4 @@
+#!/bin/bash
+prog=$1
+kill -9 $(pidof $prog) && echo "Killed $prog!" && exit
+echo "Couldn't kill $prog! Sudo?" 
