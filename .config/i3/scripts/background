@@ -1,6 +1,5 @@
 #!/bin/sh
-while true
+while sleep 600
 do
-	sleep 600
 	feh --no-fehbg --randomize --bg-max /home/mauricioquintela/.wallpapers/*
 done
