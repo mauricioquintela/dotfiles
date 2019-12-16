@@ -1,4 +1,6 @@
 #!/bin/sh
+feh --no-fehbg --randomize --bg-max /home/mauricioquintela/.wallpapers/*
+
 while sleep 600
 do
 	feh --no-fehbg --randomize --bg-max /home/mauricioquintela/.wallpapers/*
