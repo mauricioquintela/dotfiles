@@ -120,9 +120,9 @@ alias cfpnv='snx && ssh -Y mauricio@10.0.67.167'
 alias update='yay -Syyu && yes | yay -Sc'
 alias clean='yay -Rns $(yay -Qdtq)'
 alias ins='yay -S'
-alias uglyx='local=$(pwd); cd ~/HDD/git/lyx && git pull origin master && ./autogen.sh && ./configure && make -j4 && sudo make -j4 install && cd $local'
+alias uglyx='~/Scripts/update_lyx.sh'
 #alias uplyx='local=$(pwd); cd ~/HDD/git/lyx/ && git pull origin master && cd $local'
-alias uplyx='~/HDD/git/upgrade_lyx.sh'
+alias uplyx='~/Scripts/upgrade_lyx.sh'
 
 alias nr='echo RESTARTING NETWORK && sudo systemctl restart networking'
 alias sl='ls'
@@ -130,7 +130,7 @@ alias :q='exit'
 alias stahp='~/HDD/git/stahp'
 
 alias config='vim $(find ~/.config/ranger/* ~/.config/polybar/* ~/.config/qutebrowser/* ~/.config/i3/* -type f | fzf)'
-alias cgit='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
+alias cgit='/usr/bin/git --git-dir=/home/mauricioquintela/dotfiles/ --work-tree=/home/mauricioquintela/' 
 
 alias tlpstart='sudo tlpui && sudo tlp start'
 
