@@ -9,5 +9,6 @@ settings:
   auto_save.session:
     global: true
   content.notifications:
+    https://www.cmscritic.com: false
     https://www.reddit.com: false
     https://www.x1337x.se: false
