@@ -118,7 +118,7 @@ alias lcfpl='ssh -Y mauricio@10.0.64.152'
 alias cfpl='snx && ssh -Y mauricio@10.0.64.152'
 alias cfpnv='snx && ssh -Y mauricio@10.0.67.167'
 
-alias update='yay -Syyu && yes | yay -Sc'
+alias update='yay -Syyu --sudoloop && yes | yay -Sc'
 alias clean='yay -Rns $(yay -Qdtq)'
 alias ins='yay -S'
 alias uglyx='~/Scripts/update_lyx.sh'
