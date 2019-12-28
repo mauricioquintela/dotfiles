@@ -139,6 +139,7 @@ alias keygen='/home/mauricioquintela/HDD/git/activator'
 alias vp='~/HDD/git/vp.sh'
 
 alias xkcd='sxiv "$(find /HDD/git/xkcd/archive -type f| shuf -n 1)"'
+alias up='. /home/mauricioquintela/Scripts/up.sh'
 
 alias minecraft='vblank_mode=0 optirun minecraft-launcher'
 
