@@ -33,7 +33,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://youtube.com/results?search_query={}', 'rd': 'https://reddit.com/search/?q={}', 'lg': 'https://libgen.unblocked.earth/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def', 'lb.o': 'http://gen.lib.rus.ec/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def' ,'rx': 'https://arxiv.org/search/?query={}&searchtype=all&source=header', 'zt': 'https://www.zotero.org/mauricioquintela/search/{}/titleCreatorYear/item-list', 'wm': 'https://reference.wolfram.com/search/?q={}', '13': 'https://www.x1337x.se/search/{}/1/', 'tdm': 'https://technicaldeathmetal.org/?s={}&search=Search', 'pb.o': 'http://piratebayztemzmv.onion/search/{}/0/99/0','imdb': 'https://www.imdb.com/find?q={}&ref_=nv_sr_sm'}
 
 # Bindings for normal mode
-config.bind('<Ctrl+Shift+f>', 'hint links spawn --detach mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" --force-window {hint-url}')
+config.bind('<Ctrl+Shift+f>', 'hint links spawn --detach mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" --force-window \'{hint-url}\'')
 
 #block shit
 c.content.host_blocking.lists.append( str(config.configdir) + "/blockedhosts")

@@ -138,6 +138,8 @@ alias tlpstart='sudo tlpui && sudo tlp start'
 alias keygen='/home/mauricioquintela/HDD/git/activator'
 alias vp='~/HDD/git/vp.sh'
 
+alias xkcd='sxiv "$(find /HDD/git/xkcd/archive -type f| shuf -n 1)"'
+
 alias minecraft='vblank_mode=0 optirun minecraft-launcher'
 
 alias proxytor='sudoedit /etc/privoxy/config'
