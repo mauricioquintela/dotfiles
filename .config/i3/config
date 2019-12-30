@@ -457,7 +457,7 @@ mode $quicklauncher {
 #	bindsym f exec --no-startup-id "firefox-beta && rm /home/mauricioquintela/.cache/mozilla/firefox/d4jvffen.default-release/cache2/entries/*", mode "default"
 #	bindsym Shift+f exec --no-startup-id "optirun firefox-beta && rm /home/mauricioquintela/.cache/mozilla/firefox/d4jvffen.default-release/cache2/entries/*", mode "default"
 	bindsym f exec --no-startup-id "waterfox-current", mode "default"
-	bindsym Shift+f exec --no-startup-id "optirun waterfox-current", mode "default"
+	bindsym Shift+f exec --no-startup-id "prime-run waterfox-current", mode "default"
 	bindsym n exec --no-startup-id thunar, mode "default"
 	bindsym l exec --no-startup-id lyx, mode "default"
 	bindsym t exec --no-startup-id thunderbird-beta, mode "default"

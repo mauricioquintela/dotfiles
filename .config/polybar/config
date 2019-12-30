@@ -28,7 +28,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/example]
-monitor = eDP1 
+monitor = eDP-1 
 width = 100%
 height = 22
 ;offset-x = 1%
@@ -198,8 +198,9 @@ label-urgent-padding = ${module/bspwm.label-urgent-padding}
 ; label-separator = |
 
 [module/xbacklight]
-type = internal/xbacklight
-card = intel_xbacklight
+type = internal/backlight
+output = eDP-1
+card = intel_backlight
 format =  <label>
 label = %percentage%%
 
@@ -421,7 +422,7 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
+animation-charging-framerate = 1000
 
 #animation-discharging-0 = 
 #animation-discharging-1 = 
@@ -435,13 +436,13 @@ animation-discharging-2 = 
 animation-discharging-1 = 
 animation-discharging-0 = 
 animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
+animation-discharging-framerate = 1000
 
 
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 60
+warn-temperature = 66
 
 format = <ramp> <label>
 format-underline = #f50a4d
