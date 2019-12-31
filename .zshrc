@@ -141,7 +141,7 @@ alias vp='~/HDD/git/vp.sh'
 alias xkcd='sxiv "$(find /HDD/git/xkcd/archive -type f| shuf -n 1)"'
 alias up='. /home/mauricioquintela/Scripts/up.sh'
 
-alias minecraft='__GL_SYNC_TO_VBLANK=0 LIBVA_DRIVER_NAME=vdpau VDPAU_DRIVER=nvidia __NV_PRIME_RENDER_OFFLOAD=1 __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only minecraft'
+alias minecraft='__GL_SYNC_TO_VBLANK=0 prime-run minecraft' 
 
 alias proxytor='sudoedit /etc/privoxy/config'
 

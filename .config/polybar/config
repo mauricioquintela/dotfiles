@@ -58,11 +58,11 @@ font-3 = DejaVuSans-Regular:size=10;0
 font-4 = WeatherIcons-Regular:size=20;2
 
 modules-left = i3 xwindow
-modules-right = xkeyboard filesystem xbacklight pulseaudio memory cpu down-speed down-speed_eth up-speed up-speed_eth battery temperature openweathermap-fullfeatured date powermenu
+modules-right = xkeyboard filesystem xbacklight pulseaudio memory cpu down-speed down-speed_eth up-speed up-speed_eth battery temperature gputemp openweathermap-fullfeatured date powermenu
 
 tray-position = right
 tray-padding = 0 
-tray-transparent = false 
+;tray-transparent = false 
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
@@ -452,6 +452,31 @@ format-warn-underline = ${self.format-underline}
 label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/gputemp]
+type = custom/script
+exec = ~/.config/polybar/scripts/gpu_temp.sh
+interval = 5000
+;hwmon-path = 
+
+;thermal-zone = 0
+;warn-temperature = 66
+
+;format = <label>
+format-underline = #f50a4d
+;format-warn = <label-warn>
+;format-warn-underline = ${self.format-underline}
+
+;label = %temperature-c%
+;label-warn = %temperature-c%
+;label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
 ramp-1 = 
