@@ -505,5 +505,6 @@ exec_always --no-startup-id xinput set-prop "ELAN0501:00 04F3:3019 Touchpad" "li
 
 exec_always --no-startup-id xmodmap ~/.Xmodmap
 
+exec_always --no-startup-id sudo powertop --auto-tune
 
 # vim:filetype=i3
