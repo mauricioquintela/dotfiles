@@ -198,9 +198,9 @@ label-urgent-padding = ${module/bspwm.label-urgent-padding}
 ; label-separator = |
 
 [module/xbacklight]
-type = internal/backlight
-output = eDP-1
-card = intel_backlight
+type = internal/xbacklight
+output = eDP1
+card = intel_xbacklight
 format =  <label>
 label = %percentage%%
 
