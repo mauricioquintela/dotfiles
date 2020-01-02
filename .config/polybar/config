@@ -110,7 +110,7 @@ font-3 = DejaVuSans-Regular:size=10;0
 font-4 = WeatherIcons-Regular:size=20;2
 
 modules-left = i3 xwindow
-modules-right = xkeyboard filesystem xbacklight-nvidia memory cpu-nvidia down-speed down-speed_eth up-speed up-speed_eth battery temperature gputemp date powermenu
+modules-right = xkeyboard filesystem xbacklight-nvidia memory cpu-nvidia system-nvidia-smi down-speed down-speed_eth up-speed up-speed_eth battery temperature gputemp date powermenu
 
 tray-position = right
 tray-padding = 0 
@@ -556,6 +556,12 @@ type = custom/script
 exec = ~/.config/polybar/scripts/gpu_temp.sh
 interval = 10
 format-underline = #f50a4d
+
+[module/system-nvidia-smi]
+type = custom/script
+exec = ~/.config/polybar/scripts/system-nvidia-smi.sh
+interval = 10
+format-underline = #f90000
 
 [module/powermenu]
 type = custom/menu
