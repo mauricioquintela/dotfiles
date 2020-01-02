@@ -37,7 +37,7 @@ config.bind('<Ctrl+Shift+f>', 'hint links spawn --detach mpv --ytdl-format="best
 
 #block shit
 c.content.host_blocking.lists.append( str(config.configdir) + "/blockedhosts")
-#c.content.proxy(http_proxy="http://localhost:8118")
+
 c.content.proxy = 'http://localhost:8118/'
 #c.content.proxy = 'socks://localhost:9050/'
 
