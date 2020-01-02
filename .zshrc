@@ -145,6 +145,8 @@ alias minecraft='__GL_SYNC_TO_VBLANK=0 minecraft-launcher'
 
 alias proxytor='sudoedit /etc/privoxy/config'
 
+alias cmatrix='cmatrix -b -s'
+
 alias 'is_anime_gay?'='echo YES!'
 
 export EDITOR=vim
