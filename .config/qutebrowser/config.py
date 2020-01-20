@@ -5,9 +5,30 @@
 config.load_autoconfig()
 
 
+##+begin_src python
+import sys, os
+sys.path.append(os.path.join(sys.path[0], 'jblock'))
+config.source("jblock/jblock/integrations/qutebrowser.py")
+##+end_src
+config.set(
+    "content.host_blocking.lists",
+    [
+        "https://easylist.to/easylist/easylist.txt",
+        "https://easylist.to/easylist/easyprivacy.txt",
+        "https://easylist.to/easylist/fanboy-annoyance.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
+        "https://www.malwaredomainlist.com/hostslist/hosts.txt",
+        "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext",
+    ],
+)
 
 
-
+c.content.host_blocking.enabled = True
 
 # Enable JavaScript.
 # Type: Bool
@@ -33,10 +54,11 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://youtube.com/results?search_query={}', 'rd': 'https://reddit.com/search/?q={}', 'lg': 'https://libgen.unblocked.earth/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def', 'lb.o': 'http://gen.lib.rus.ec/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def' ,'rx': 'https://arxiv.org/search/?query={}&searchtype=all&source=header', 'zt': 'https://www.zotero.org/mauricioquintela/search/{}/titleCreatorYear/item-list', 'wm': 'https://reference.wolfram.com/search/?q={}', '13': 'https://www.x1337x.se/search/{}/1/', 'tdm': 'https://technicaldeathmetal.org/?s={}&search=Search', 'pb.o': 'http://piratebayztemzmv.onion/search/{}/0/99/0','imdb': 'https://www.imdb.com/find?q={}&ref_=nv_sr_sm','aur': 'https://aur.archlinux.org/packages/?O=0&K={}', 'ma': 'https://www.metal-archives.com/search?searchString={}&type=band_name'}
 
 # Bindings for normal mode
-config.bind('<Ctrl+Shift+f>', 'hint links spawn --detach mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" --force-window \'{hint-url}\'')
+config.bind('<Ctrl+Shift+f>', 'hint all spawn --detach mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" --force-window \'{hint-url}\'')
 
 #block shit
 c.content.host_blocking.lists.append( str(config.configdir) + "/blockedhosts")
+
 
 c.content.proxy = 'http://localhost:8118/'
 #c.content.proxy = 'socks://localhost:9050/'
@@ -202,11 +224,11 @@ c.downloads.location.directory = '/HDD/Downloads/'
 ## Background color for hints. Note that you can use a `rgba(...)` value
 ## for transparency.
 ## Type: QssColor
-# c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8), stop:1 rgba(255, 197, 66, 0.8))'
+c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8), stop:1 rgba(255, 197, 66, 0.8))'
 
 ## Font color for hints.
 ## Type: QssColor
-# c.colors.hints.fg = 'black'
+c.colors.hints.fg = 'black'
 
 ## Font color for the matched part of hints.
 ## Type: QtColor
@@ -262,7 +284,7 @@ c.downloads.location.directory = '/HDD/Downloads/'
 
 ## Background color for prompts.
 ## Type: QssColor
-# c.colors.prompts.bg = '#444444'
+c.colors.prompts.bg = '#444444'
 
 ## Border used around UI elements in prompts.
 ## Type: String
@@ -812,7 +834,7 @@ c.downloads.location.directory = '/HDD/Downloads/'
 
 ## Send DNS requests over the configured proxy.
 ## Type: Bool
-# c.content.proxy_dns_requests = True
+#c.content.proxy_dns_requests = True
 
 ## Allow websites to register protocol handlers via
 ## `navigator.registerProtocolHandler`.
@@ -833,7 +855,7 @@ c.downloads.location.directory = '/HDD/Downloads/'
 
 ## List of user stylesheet filenames to use.
 ## Type: List of File, or File
-# c.content.user_stylesheets = []
+c.content.user_stylesheets = ["userContent.css"]
 
 ## Enable WebGL.
 ## Type: Bool
@@ -1368,7 +1390,7 @@ c.downloads.location.directory = '/HDD/Downloads/'
 
 ## Open new tabs (middleclick/ctrl+click) in the background.
 ## Type: Bool
-# c.tabs.background = False
+c.tabs.background = True
 
 ## Mouse button with which to close tabs.
 ## Type: String
@@ -1649,7 +1671,7 @@ c.downloads.location.directory = '/HDD/Downloads/'
 # config.bind('.', 'repeat-command')
 # config.bind('/', 'set-cmd-text /')
 # config.bind(':', 'set-cmd-text :')
-# config.bind(';I', 'hint images tab')
+# config.bind(';I', 'hint images yank')
 # config.bind(';O', 'hint links fill :open -t -r {hint-url}')
 # config.bind(';R', 'hint --rapid links window')
 # config.bind(';Y', 'hint links yank-primary')
@@ -1933,3 +1955,5 @@ c.downloads.location.directory = '/HDD/Downloads/'
 # config.bind('Y', 'prompt-accept --save yes', mode='yesno')
 # config.bind('n', 'prompt-accept no', mode='yesno')
 # config.bind('y', 'prompt-accept yes', mode='yesno')
+
+

@@ -291,7 +291,7 @@ for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] border normal
 for_window [class="Xfburn"] floating enable
-assign [class="Firefox"] $ws3
+#assign [class="Firefox"] $ws3
 for_window [class="Firefox" window_role="About"] floating enable
 assign [class="Thunderbird"] $ws9
 assign [class="Discord"] $ws10
@@ -454,10 +454,7 @@ mode $hdmi_side {
 set $quicklauncher "Run [f] [q] [r/Ctrl+r] [l] [m] [t] [n] [c] [z] [d]"
 bindsym $mod+x mode $quicklauncher
 mode $quicklauncher {
-#	bindsym f exec --no-startup-id "firefox-beta && rm /home/mauricioquintela/.cache/mozilla/firefox/d4jvffen.default-release/cache2/entries/*", mode "default"
-#	bindsym Shift+f exec --no-startup-id "optirun firefox-beta && rm /home/mauricioquintela/.cache/mozilla/firefox/d4jvffen.default-release/cache2/entries/*", mode "default"
-	bindsym f exec --no-startup-id "waterfox-current", mode "default"
-#	bindsym Shift+f exec --no-startup-id "prime-run waterfox-current", mode "default"
+	bindsym f exec --no-startup-id "firefox-beta && rm /home/mauricioquintela/.cache/mozilla/firefox/d4jvffen.default-release/cache2/entries/*", mode "default"
 	bindsym n exec --no-startup-id thunar, mode "default"
 	bindsym l exec --no-startup-id lyx, mode "default"
 	bindsym t exec --no-startup-id thunderbird-beta, mode "default"
