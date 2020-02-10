@@ -58,7 +58,7 @@ font-3 = DejaVuSans-Regular:size=10;0
 font-4 = WeatherIcons-Regular:size=20;2
 
 modules-left = i3 xwindow
-modules-right = xkeyboard filesystem xbacklight pulseaudio memory cpu down-speed down-speed_eth up-speed up-speed_eth battery temperature openweathermap-fullfeatured date powermenu
+modules-right = xkeyboard filesystem xbacklight pulseaudio memory cpu signal-str down-speed down-speed_eth up-speed up-speed_eth battery temperature openweathermap-fullfeatured date powermenu
 
 tray-position = right
 tray-padding = 0 
@@ -110,7 +110,7 @@ font-3 = DejaVuSans-Regular:size=10;0
 font-4 = WeatherIcons-Regular:size=20;2
 
 modules-left = i3 xwindow
-modules-right = xkeyboard filesystem xbacklight-nvidia memory cpu-nvidia system-nvidia-smi down-speed down-speed_eth up-speed up-speed_eth battery temperature gputemp date powermenu
+modules-right = xkeyboard filesystem xbacklight-nvidia memory cpu-nvidia system-nvidia-smi signal-str down-speed down-speed_eth up-speed up-speed_eth battery temperature gputemp date powermenu
 
 tray-position = right
 tray-padding = 0 
@@ -375,6 +375,17 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/signal-str]
+type = internal/network
+interface = wlp3s0
+format-connected-prefix =     
+format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-underline = #42d1f4
+format-connected-padding = 0
+
+label-connected = %signal%%
+label-padding-left = 0 
 
 [module/down-speed]
 type = internal/network
