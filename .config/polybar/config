@@ -377,15 +377,11 @@ format-disconnected =
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/signal-str]
-type = internal/network
-interface = wlp3s0
-format-connected-prefix =     
-format-connected-prefix-foreground = ${colors.foreground-alt}
-format-connected-underline = #42d1f4
-format-connected-padding = 0
 
-label-connected = %signal%%
-label-padding-left = 0 
+type = custom/script
+exec = ~/.config/polybar/scripts/network_signal.sh
+interval = 30
+label-underline = #42d1f4
 
 [module/down-speed]
 type = internal/network
