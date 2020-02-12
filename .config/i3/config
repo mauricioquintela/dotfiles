@@ -496,6 +496,9 @@ exec --no-startup-id numlockx
 exec --no-startup-id ~/.config/i3/scripts/background
 #blurme
 #exec --no-startup-id ~/.config/i3/scripts/blurme
+#autotiling
+exec --no-startup-id autotiling
+
 
 #non-stupid touchpad
 #exec_always --no-startup-id synclient NaturalScrolling=1 HorizTwoFingerScroll=1 VertScrollDelta=-113 HorizScrollDelta=-79 MaxTapTime=150 PalmDetect=1 TapButton1=1 TapButton2=3 TapButton3=2

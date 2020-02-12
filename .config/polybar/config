@@ -110,7 +110,7 @@ font-3 = DejaVuSans-Regular:size=10;0
 font-4 = WeatherIcons-Regular:size=20;2
 
 modules-left = i3 xwindow
-modules-right = xkeyboard filesystem xbacklight-nvidia memory cpu-nvidia system-nvidia-smi signal-str down-speed down-speed_eth up-speed up-speed_eth battery temperature gputemp date powermenu
+modules-right = xkeyboard xbacklight-nvidia pulseaudio memory cpu-nvidia system-nvidia-smi signal-str down-speed down-speed_eth up-speed up-speed_eth battery temperature gputemp date powermenu
 
 tray-position = right
 tray-padding = 0 
@@ -266,50 +266,17 @@ label = %percentage%%
 [module/cpu-nvidia]
 type = internal/cpu
 interval = 2
-#format-prefix = "CPU: "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label =  %percentage%%
 
-#type = internal/cpu
-#interval = 2
-#format = <label> <ramp-coreload>
-#format-prefix-foreground = ${colors.foreground-alt}
-#format-underline = #f90000
-#label = 
-#
-#ramp-coreload-0 = ▁
-#ramp-coreload-0-foreground = #aaff77
-#ramp-coreload-1 = ▂
-#ramp-coreload-1-foreground = #aaff77
-#ramp-coreload-2 = ▃
-#ramp-coreload-2-foreground = #aaff77
-#ramp-coreload-3 = ▄
-#ramp-coreload-3-foreground = #aaff77
-#ramp-coreload-4 = ▅
-#ramp-coreload-4-foreground = #fba922
-#ramp-coreload-5 = ▆
-#ramp-coreload-5-foreground = #fba922
-#ramp-coreload-6 = ▇
-#ramp-coreload-6-foreground = #ff5555
-#ramp-coreload-7 = █
-#ramp-coreload-7-foreground = #ff5555
-
 [module/cpu]
-#type = internal/cpu
-#interval = 2
-#format-prefix = "CPU: "
-#format-prefix-foreground = ${colors.foreground-alt}
-#format-underline = #f90000
-#label =  %percentage%%
-
 type = internal/cpu
 interval = 2
 format = <label> <ramp-coreload>
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label = 
-#
 ramp-coreload-0 = ▁
 ramp-coreload-0-foreground = #aaff77
 ramp-coreload-1 = ▂
@@ -329,11 +296,11 @@ ramp-coreload-7-foreground = #ff5555
 
 [module/memory]
 #type = internal/memory
-interval = 2
 #label = %percentage_used%%
 
 type = internal/memory
 format = <label> 
+interval = 2
 label =  %percentage_used%%
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
@@ -380,7 +347,8 @@ format-disconnected =
 
 type = custom/script
 exec = ~/.config/polybar/scripts/network_signal.sh
-interval = 30
+tail = true
+click-left = "kill -USR1 $(pgrep --oldest --parent %pid%)" 
 label-underline = #42d1f4
 
 [module/down-speed]
@@ -450,6 +418,7 @@ label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
+click-right = pavucontrol &
 
 format-volume = <label-volume>
 label-volume =  %percentage%%
@@ -521,12 +490,6 @@ animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 1000
-
-#animation-discharging-0 = 
-#animation-discharging-1 = 
-#animation-discharging-2 = 
-#animation-discharging-foreground = ${colors.foreground-alt}
-#animation-discharging-framerate = 750
 
 animation-discharging-4 = 
 animation-discharging-3 = 
