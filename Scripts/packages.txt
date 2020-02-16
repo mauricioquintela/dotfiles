@@ -361,7 +361,6 @@ manjaro-system
 markdown_previewer
 matcha-gtk-theme
 mathjax
-mathpix-snipping-tool
 mdadm
 memtest86+
 menuconfig-git
@@ -626,6 +625,7 @@ shadow
 simple-scan
 skypeforlinux-preview-bin
 smpeg
+snapd
 soundfont-fluid
 sox
 spectre-meltdown-checker
