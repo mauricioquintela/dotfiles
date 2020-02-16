@@ -148,6 +148,7 @@ i3lockmore-git
 i7z
 ifplugd
 ifuse
+indicator-kdeconnect-git
 inetutils
 iniparser
 intel-ucode
@@ -167,7 +168,6 @@ jq
 jre
 jupyter
 jxrlib
-kdeconnect
 kitty
 koma-script
 kvantum-manjaro
@@ -387,6 +387,7 @@ nano
 nbfc
 ncdu
 neofetch
+nerd-fonts-iosevka
 net-tools
 netctl
 networkmanager-openconnect
@@ -501,6 +502,7 @@ python-pytest
 python-pytest-cov
 python-pytest-twisted
 python-pytz
+python-pyvcf
 python-rencode
 python-service-identity
 python-sip
@@ -630,6 +632,7 @@ soundfont-fluid
 sox
 spectre-meltdown-checker
 speedtest-cli
+sshfs
 steam-manjaro
 streamlink-git
 streamlink-twitch-gui-git
@@ -728,6 +731,7 @@ vulkan-intel
 vulkan-radeon
 vundle-git
 w3m
+waterfox-classic-bin
 waterfox-current-bin
 wget
 whatmp3-git

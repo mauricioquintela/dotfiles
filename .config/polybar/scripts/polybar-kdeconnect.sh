@@ -103,7 +103,7 @@ show_menu () {
                         qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/sftp" org.kde.kdeconnect.device.sftp.startBrowsing;;
 	        *'Send SMS' )
 			message=$(echo "a sair" | rofi -sep "|" -dmenu -i -p "Msg to send")
-			recipient=$(cat ~/Scripts/.contacts.txt | rofi -sep "|" -dmenu -i -p "Recipient's phone #")
+			recipient=$(cat ~/Scripts/.contacts.txt | rofi -sep "|" -dmenu -i -p "Recipient's phone #" | awk -F: '{print $2}')
 			kdeconnect-cli --send-sms "$message" --destination "$recipient" -d $DEV_ID ;;
 #		*'Refresh' )
 #	             	kdeconnect-cli --refresh;;
