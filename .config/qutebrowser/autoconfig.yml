@@ -10,6 +10,7 @@ settings:
     global: true
   content.notifications:
     https://www.cmscritic.com: false
+    https://www.instagram.com: true
     https://www.reddit.com: false
     https://www.x1337x.se: false
   scrolling.smooth:

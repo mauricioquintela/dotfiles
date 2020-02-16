@@ -19,8 +19,8 @@ COLOR_BATTERY_50='#666'         # Battery >= 50
 COLOR_BATTERY_LOW='#f00'        # Battery <  50
 
 # Icons shown in Polybar
-ICON_SMARTPHONE=''
-ICON_TABLET=''
+ICON_SMARTPHONE='  '
+ICON_TABLET='  '
 SEPERATOR='|'
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -102,8 +102,12 @@ show_menu () {
                         fi
                         qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/sftp" org.kde.kdeconnect.device.sftp.startBrowsing;;
 	        *'Send SMS' )
-			message=$(echo "a sair" | rofi -sep "|" -dmenu -i -p "Msg to send")
-			recipient=$(cat ~/Scripts/.contacts.txt | rofi -sep "|" -dmenu -i -p "Recipient's phone #" | awk -F: '{print $2}')
+			message=$(echo "a sair |chego daqui a 25-30 |ok" | rofi -sep "|" -dmenu -i -p "Msg to send")
+			if test -f "$HOME/Scripts/.contacts.txt"; then
+				recipient=$(cat ~/Scripts/.contacts.txt | rofi -sep "|" -dmenu -i -p "Recipient's phone #" | awk -F: '{print $2}')
+			else
+				recipient=$(echo "" | rofi -sep "|" -dmenu -i -p "Recipient's phone #" | awk -F: '{print $2}')
+			fi
 			kdeconnect-cli --send-sms "$message" --destination "$recipient" -d $DEV_ID ;;
 #		*'Refresh' )
 #	             	kdeconnect-cli --refresh;;
