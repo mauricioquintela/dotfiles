@@ -89,7 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -109,9 +109,9 @@ alias mv='mv -u'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias casa='ssh -Y mauricioquintela@37.189.176.163'
-alias servidor='ssh -p 1337 mauricio@188.83.248.201'
+#alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+#alias casa='ssh -Y mauricioquintela@37.189.176.163'
+#alias servidor='ssh -p 1337 mauricio@188.83.248.201'
 alias grid="ssh -t fc-mfcmquintela@submit.grid.fe.up.pt"
 alias lcfpnv='ssh -Y mauricio@10.0.67.167'
 alias lcfpl='ssh -Y mauricio@10.0.64.152'
@@ -119,9 +119,9 @@ alias cfpl='snx && ssh -Y mauricio@10.0.64.152'
 alias cfpnv='snx && ssh -Y mauricio@10.0.67.167'
 
 alias update='yay -Syyu --sudoloop && yes | yay -Sc && yay -Qqe > Scripts/packages.txt'
-alias clean='yay -Rns $(yay -Qdtq)'
-alias ins='yay -S'
-alias uglyx='~/Scripts/update_lyx.sh'
+#alias clean='yay -Rns $(yay -Qdtq)'
+alias ins='yay -S --sudoloop'
+#alias uglyx='~/Scripts/update_lyx.sh'
 alias uplyx='~/Scripts/upgrade_lyx.sh'
 #alias uppoly='~/Scripts/upgrade_polybar.sh'
 
@@ -139,15 +139,15 @@ alias keygen='/home/mauricioquintela/HDD/git/activator'
 alias vp='~/HDD/git/vp.sh'
 
 alias xkcd='sxiv "$(find /HDD/git/xkcd/archive -type f| shuf -n 1)"'
-alias up='. /home/mauricioquintela/Scripts/up.sh'
+#alias up='. /home/mauricioquintela/Scripts/up.sh'
 
 alias minecraft='__GL_SYNC_TO_VBLANK=0 minecraft-launcher' 
 
 alias proxytor='sudoedit /etc/privoxy/config'
 
-alias cmatrix='cmatrix -b -s'
+#alias cmatrix='cmatrix -b -s'
 
-alias 'is_anime_gay?'='echo YES!'
+#alias 'is_anime_gay?'='echo YES!'
 
 export EDITOR=vim;
 export VISUAL=vim;

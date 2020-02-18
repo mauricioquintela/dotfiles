@@ -142,6 +142,7 @@ hyperv
 hyphen-en
 i3-vim-syntax-git
 i3gopher
+i3ipc-glib-git
 i3lock-fancy-rapid-git
 i3lock-git
 i3lockmore-git
@@ -151,6 +152,7 @@ ifuse
 indicator-kdeconnect-git
 inetutils
 iniparser
+intel-hybrid-codec-driver
 intel-ucode
 intel-undervolt
 intltool
@@ -301,12 +303,12 @@ libtorrent-rasterbar
 libtraceevent
 libudev0-shim
 libunrar
-libva-git
-libva-intel-driver
+libva-intel-driver-hybrid
 libva-mesa-driver
 libva-utils
 libva-vdpau-driver
 libva1
+libvdpau-va-gl
 libvpx1.3
 libwnck3
 libwrap

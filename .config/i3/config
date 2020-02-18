@@ -470,6 +470,7 @@ mode $quicklauncher {
 	bindsym m exec --no-startup-id mathematica, mode "default"
 	bindsym c exec --no-startup-id cheese, mode "default"
 	bindsym q exec --no-startup-id qutebrowser --qt-flag ignore-gpu-blacklist --qt-flag enable-gpu-rasterization --qt-flag enable-native-gpu-memory-buffers --qt-flag num-raster-threads=4, mode "default"
+#	bindsym q exec --no-startup-id qutebrowser, mode "default"
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
@@ -498,7 +499,7 @@ exec --no-startup-id ~/.config/i3/scripts/background
 #blurme
 #exec --no-startup-id ~/.config/i3/scripts/blurme
 #autotiling
-exec --no-startup-id autotiling
+exec --no-startup-id ~/.config/i3/scripts/autotiling
 
 
 #non-stupid touchpad

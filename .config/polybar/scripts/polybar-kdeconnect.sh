@@ -4,7 +4,7 @@
 LOCATION=0
 YOFFSET=0
 XOFFSET=0
-WIDTH=24
+WIDTH=28
 WIDTH_WIDE=24
 THEME=material
 
@@ -41,7 +41,8 @@ show_devices () {
             devices+="%{A1:$DIR/polybar-kdeconnect.sh -n '$devicename' -i $deviceid -b $battery -m:}$icon%{A}$SEPERATOR"
         elif [ "$isreach" = "false" ] && [ "$istrust" = "true" ]
         then
-            devices+="$(get_icon -1 "$devicetype")$SEPERATOR"
+            icon="$(get_icon -1 "$devicetype")"
+            devices+="%{A1:$DIR/polybar-kdeconnect.sh -r:}$icon%{A}$SEPERATOR"
         else
             haspairing="$(qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$deviceid" org.kde.kdeconnect.device.hasPairingRequests)"
             if [ "$haspairing" = "true" ]
@@ -56,38 +57,10 @@ show_devices () {
     echo "${devices::-1}"
 }
 
-#used to interact with notifications if they are avalable
-Notification_menu () {
-    replyable=`qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$2/notifications/$1 org.kde.kdeconnect.device.notifications.notification.replyId`
-    echo $replyable
-    options=$(printf "View\\nDissmiss")
-    if [ "$replyable" ]; then
-        options+=$(printf "\\nReply")
-        optionNum=$((optionNum+1))
-    fi
-    ticker1=`qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$2/notifications/$1 org.kde.kdeconnect.device.notifications.notification.ticker`
-    prompt=$(echo $ticker1 | cut -c 1-100)
-    menu=$(echo $options | dmenu -i -p "$prompt" -l $optionNum )
-    case "$menu" in
-        *'View' )
-            ticker1=`qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$2/notifications/$1 org.kde.kdeconnect.device.notifications.notification.ticker`
-            notify-send "$ticker1";;
-        *'Dissmiss')
-            qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$2/notifications/$1 org.kde.kdeconnect.device.notifications.notification.dismiss;;
-        *'Reply' )
-            qdbus org.kde.kdeconnect /modules/kdeconnect/devices/$2/notifications/$1 org.kde.kdeconnect.device.notifications.notification.reply;;
-    esac
-}
-
 show_menu () {
 	optionNum=6
 	options=$(echo "Battery: $DEV_BATTERY%|Ping|Find Device|Send File|Browse Files|Send SMS|Unpair")
-#	notification1=`dbus-send --session --print-reply --dest="org.kde.kdeconnect" /modules/kdeconnect/devices/$DEV_ID org.kde.kdeconnect.device.notifications.activeNotifications|tr '\n' ' ' | awk '{print $12}'| sed s/\"//g`
-#	if [ $notification1 ]; then
-#		options+=$(printf "\\nNotification")
-#		optionNum=$((optionNum+1))
-#	fi
-#	options+=$(printf "|Refresh")
+	options+=$(printf "|Refresh")
 	menu="$(echo $options | rofi -sep "|" -dmenu -i -p "$DEV_NAME" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH -hide-scrollbar -line-padding 4 -padding 20 -lines $optionNum)"
 	case "$menu" in
         	*'Ping')
@@ -109,16 +82,22 @@ show_menu () {
 				recipient=$(echo "" | rofi -sep "|" -dmenu -i -p "Recipient's phone #" | awk -F: '{print $2}')
 			fi
 			kdeconnect-cli --send-sms "$message" --destination "$recipient" -d $DEV_ID ;;
-#		*'Refresh' )
-#	             	kdeconnect-cli --refresh;;
-#		*'Notification' )
-#			Notification_menu $notification1 $DEV_ID;;
+		*'Refresh' )
+	             	kdeconnect-cli --refresh;;
 #              *'Unpair' ) qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID" org.kde.kdeconnect.device.unpair
                 esac
 }
 
+show_rmenu () {
+    menu="$(rofi -sep "|" -dmenu -i -p "No connection" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH -hide-scrollbar -line-padding 1 -padding 20 -lines 1 <<< "Refresh Connections")"
+                case "$menu" in
+                    *'Refresh') 
+			    kdeconnect-cli --refresh;;
+                esac
+}
+
 show_pmenu () {
-    menu="$(rofi -sep "|" -dmenu -i -p "$DEV_NAME" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH -hide-scrollbar -line-padding 1 -padding 20 -lines 1<<<"Pair Device")"
+    menu="$(rofi -sep "|" -dmenu -i -p "$DEV_NAME" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH -hide-scrollbar -line-padding 1 -padding 20 -lines 1 <<< "Pair Device")"
                 case "$menu" in
                     *'Pair Device') qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID" org.kde.kdeconnect.device.requestPair
                 esac
@@ -141,7 +120,8 @@ get_icon () {
     fi
     case $1 in
     "-1")     ICON="%{F$COLOR_DISCONNECTED}$icon%{F-}" ;;
-    "-2")     ICON="%{F$COLOR_NEWDEVICE}$icon%{F-}" ;;
+#   "-2")     ICON="%{F$COLOR_NEWDEVICE}$icon%{F-}" ;;
+    "-2")   ICON=" ";;
     5*)     ICON="%{F$COLOR_BATTERY_50}$icon%{F-}" ;;
     6*)     ICON="%{F$COLOR_BATTERY_60}$icon%{F-}" ;;
     7*)     ICON="%{F$COLOR_BATTERY_70}$icon%{F-}" ;;
@@ -153,7 +133,7 @@ get_icon () {
 }
 
 unset DEV_ID DEV_NAME DEV_BATTERY
-while getopts 'di:n:b:mp' c
+while getopts 'di:n:b:mpr' c
 do
     # shellcheck disable=SC2220
     case $c in
@@ -163,5 +143,6 @@ do
         b) DEV_BATTERY=$OPTARG ;;
         m) show_menu  ;;
         p) show_pmenu ;;
+	r) show_rmenu ;;
     esac
 done
