@@ -1,12 +1,12 @@
 *nnn.vim* nnn file manager plugin for vim/neovim.
 *nnn*
 >
-  __   __     __   __     __   __     __   __   __     __    __    
- /\ "-.\ \   /\ "-.\ \   /\ "-.\ \   /\ \ / /  /\ \   /\ "-./  \   
- \ \ \-.  \  \ \ \-.  \  \ \ \-.  \  \ \ \'/   \ \ \  \ \ \-./\ \  
-  \ \_\\"\_\  \ \_\\"\_\  \ \_\\"\_\  \ \__|    \ \_\  \ \_\ \ \_\ 
-   \/_/ \/_/   \/_/ \/_/   \/_/ \/_/   \/_/      \/_/   \/_/  \/_/ 
-<                                                                  
+  __   __     __   __     __   __     __   __   __     __    __
+ /\ "-.\ \   /\ "-.\ \   /\ "-.\ \   /\ \ / /  /\ \   /\ "-./  \
+ \ \ \-.  \  \ \ \-.  \  \ \ \-.  \  \ \ \'/   \ \ \  \ \ \-./\ \
+  \ \_\\"\_\  \ \_\\"\_\  \ \_\\"\_\  \ \__|    \ \_\  \ \_\ \ \_\
+   \/_/ \/_/   \/_/ \/_/   \/_/ \/_/   \/_/      \/_/   \/_/  \/_/
+<
 
 =============================================================================
 CONTENTS *nnn-help*
@@ -47,6 +47,9 @@ file and add the remaining files to the arg list/buffer list.
 
 Pressing enter on a file in nnn will pick any earlier selection, pick
 the file and exit nnn.
+
+Note that pressing <kbd>l</kbd> or <kbd>Right</kbd> on a file would open it
+instead of picking.
 
 To discard selection and exit, press ^G.
 
@@ -100,6 +103,25 @@ g:nnn#layout                                                     *g:nnn#layout*
 
                   " Or pass a dictionary with window size
                   let g:nnn#layout = { 'left': '~20%' } " or right, up, down
+
+                  " Floating window (neovim)
+                  function! s:layout()
+                    let buf = nvim_create_buf(v:false, v:true)
+
+                    let height = &lines - (float2nr(&lines / 3))
+                    let width = float2nr(&columns - (&columns * 2 / 3))
+
+                    let opts = {
+                          \ 'relative': 'editor',
+                          \ 'row': 2,
+                          \ 'col': 8,
+                          \ 'width': width,
+                          \ 'height': height
+                          \ }
+
+                    call nvim_open_win(buf, v:true, opts)
+                  endfunction
+                  let g:nnn#layout = 'call ' . string(function('<SID>layout')) . '()'
 <
 
 g:nnn#action                                                     *g:nnn#action*
@@ -137,12 +159,12 @@ g:nnn#command                                                   *g:nnn#command*
                   Default: 'nnn'
                   When you want to override the default nnn command and add
                   some extra flags.
-                  Example you want to start nnn in light mode.
+                  Example you want to start nnn in detail mode.
 >
-                  let g:nnn#command = 'nnn -l'
+                  let g:nnn#command = 'nnn -d'
 
                   " or pass some env variables
-                  let g:nnn#command = 'NNN_RESTRICT_NAV_OPEN=1 nnn -l'
+                  let g:nnn#command = 'NNN_TRASH=1 nnn -d'
 <
 
 g:nnn#replace_netrw                                       *g:nnn#replace_netrw*
@@ -181,7 +203,7 @@ Miscellaneous                                                        *nnn-misc*
 
 You can define env variables in `vimrc` and nnn will detect it.
 >
-                  let $NNN_RESTRICT_NAV_OPEN=1
+                  let $NNN_TRASH=1
 <
 
 =============================================================================

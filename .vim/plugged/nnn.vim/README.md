@@ -37,6 +37,9 @@ file and add the remaining files to the arg list/buffer list.
 Pressing <kbd>enter</kbd> on a file in nnn will pick any earlier selection, pick
 the file and exit nnn.
 
+Note that pressing <kbd>l</kbd> or <kbd>Right</kbd> on a file would open it
+instead of picking.
+
 To discard selection and exit, press <kbd>^G</kbd>.
 
 Please visit the complete documentation by running `:help nnn`.
@@ -66,6 +69,25 @@ let g:nnn#layout = 'new' " or vnew, tabnew etc.
 
 " Or pass a dictionary with window size
 let g:nnn#layout = { 'left': '~20%' } " or right, up, down
+
+" Floating window (neovim)
+function! s:layout()
+  let buf = nvim_create_buf(v:false, v:true)
+
+  let height = &lines - (float2nr(&lines / 3))
+  let width = float2nr(&columns - (&columns * 2 / 3))
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': 2,
+        \ 'col': 8,
+        \ 'width': width,
+        \ 'height': height
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+let g:nnn#layout = 'call ' . string(function('<SID>layout')) . '()'
 ```
 
 #### Action
@@ -88,13 +110,13 @@ the buffer list.
 #### Command override
 
 When you want to override the default nnn command and add some extra flags.
-Example you want to start nnn in light mode.
+Example you want to start nnn in detail mode.
 
 ```vim
-let g:nnn#command = 'nnn -l'
+let g:nnn#command = 'nnn -d'
 
 " or pass some env variables
-let g:nnn#command = 'NNN_RESTRICT_NAV_OPEN=1 nnn -l'
+let g:nnn#command = 'NNN_TRASH=1 nnn -d'
 ```
 
 #### `nnn#pick()`
@@ -118,7 +140,7 @@ call nnn#pick('~/some-files', { 'edit': 'vertical split' })
 You can define env variables in `vimrc` and nnn will detect it.
 
 ```vim
-let $NNN_RESTRICT_NAV_OPEN=1
+let $NNN_TRASH=1
 ```
 
 ### Credits
