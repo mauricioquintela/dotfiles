@@ -148,10 +148,9 @@ alias proxytor='sudoedit /etc/privoxy/config'
 
 #alias cmatrix='cmatrix -b -s'
 
-#alias 'is_anime_gay?'='echo YES!'
 
-export EDITOR=vim;
-export VISUAL=vim;
+export EDITOR=vim
+export VISUAL=vim
 export NNN_USE_EDITOR=vim
 
 
