@@ -733,7 +733,6 @@ vulkan-intel
 vulkan-radeon
 vundle-git
 w3m
-waterfox-classic-bin
 waterfox-current-bin
 wget
 whatmp3-git
