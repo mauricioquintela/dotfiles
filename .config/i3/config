@@ -22,7 +22,7 @@ bindsym Control+mod2+KP_Enter exec --no-startup-id kitty
 bindsym Control+KP_Enter exec --no-startup-id kitty
 
 exec --no-startup-id kitty --name=dropdown
-for_window [instance="dropdown"] floating enable;
+for_window [instance="dropdown"] floating enable, resize set 640 480, move position 683 384;
 for_window [instance="dropdown"] move scratchpad; [instance="dropdown"] scratchpad show; move scratchpad
 bindsym $mod+s  [instance="dropdown"] scratchpad show
 
