@@ -420,7 +420,7 @@ label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-click-right = pavucontrol &
+click-right = pavucontrol -t 5 &
 
 format-volume = <label-volume>
 label-volume =  %percentage%%

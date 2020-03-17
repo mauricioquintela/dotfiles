@@ -487,7 +487,11 @@ exec --no-startup-id bumblebeed --daemon
 exec --no-startup-id numlockx
 
 #background 
-exec --no-startup-id ~/.config/i3/scripts/background
+#randomizer
+#exec --no-startup-id ~/.config/i3/scripts/background
+
+#fixed
+exec --no-startup-id "feh --no-fehbg --bg-max ~/2.jpg"
 
 #blurme
 #exec --no-startup-id ~/.config/i3/scripts/blurme
