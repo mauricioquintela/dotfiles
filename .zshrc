@@ -139,7 +139,7 @@ alias tlpstart='sudo tlpui && sudo tlp start'
 alias keygen='/home/mauricioquintela/HDD/git/activator'
 alias vp='~/HDD/git/vp.sh'
 
-alias xkcd='sxiv "$(find /HDD/git/xkcd/archive -type f| shuf -n 1)"'
+alias xkcd='sxiv "$(find /HDD/git/xkcd/archive -type f| shuf -n 1)" & sleep 0.5 && i3-msg "[id=$(xdotool getactivewindow)] floating enable"'
 #alias up='. /home/mauricioquintela/Scripts/up.sh'
 
 alias minecraft='__GL_SYNC_TO_VBLANK=0 minecraft-launcher' 

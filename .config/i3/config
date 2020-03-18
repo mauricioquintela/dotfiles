@@ -29,6 +29,9 @@ bindsym $mod+s  [instance="dropdown"] scratchpad show
 # Window kill command
 bindsym $mod+Shift+q kill
 
+#xkcd comic
+bindsym $mod+Ctrl+x exec --no-startup-id sxiv "$(find /HDD/git/xkcd/archive -type f| shuf -n 1)" & sleep 0.1 && i3-msg "[id=$(xdotool getactivewindow)] floating enable"
+
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
 
@@ -289,7 +292,6 @@ for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] border normal
 for_window [class="Xfburn"] floating enable
-#assign [class="Firefox"] $ws3
 for_window [class="Firefox" window_role="About"] floating enable
 assign [class="Thunderbird"] $ws9
 assign [class="Discord"] $ws10
@@ -526,7 +528,7 @@ exec --no-startup-id optimus-manager-qt
 exec_always --no-startup-id xinput set-prop "ELAN0501:00 04F3:3019 Touchpad" "libinput Natural Scrolling Enabled" 1
 
 #swap caps and esc
-exec_always --no-startup-id xmodmap ~/.Xmodmap
+#exec_always --no-startup-id xmodmap ~/.Xmodmap
 
 
 
