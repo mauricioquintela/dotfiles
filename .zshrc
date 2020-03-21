@@ -104,6 +104,8 @@ export ARCHFLAGS="-arch x86_64"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+#alias cp='cp -i'
+alias vim='nvim'
 
 alias mv='mv -u'
 
@@ -122,11 +124,9 @@ alias update='yay -Syu --sudoloop && yes | yay -Sc && sudo snap refresh'
 #alias update='yay -Syu --sudoloop && yes | yay -Sc && yay -Qqe > Scripts/packages.txt'
 #alias clean='yay -Rns $(yay -Qdtq)'
 alias ins='yay -S --sudoloop'
-#alias uglyx='~/Scripts/update_lyx.sh'
 alias uplyx='~/Scripts/upgrade_lyx.sh'
-#alias uppoly='~/Scripts/upgrade_polybar.sh'
 
-alias nr='echo RESTARTING NETWORK && sudo systemctl restart networking'
+alias cp='/home/mauricioquintela/Scripts/cp_better' 
 alias sl='ls'
 alias :q='exit'
 alias stahp='~/HDD/git/stahp'
@@ -149,9 +149,9 @@ alias proxytor='sudoedit /etc/privoxy/config'
 #alias cmatrix='cmatrix -b -s'
 
 
-export EDITOR=vim
-export VISUAL=vim
-export NNN_USE_EDITOR=vim
+export EDITOR=nvim
+export VISUAL=nvim
+export NNN_USE_EDITOR=nvim
 
 
 
@@ -173,3 +173,4 @@ prompt_context() {
   prompt_segment black default "%(!.%{%F{yellow}%}.)"
 }
 clear
+set termguicolors

@@ -18,20 +18,20 @@ dir1=~/Documents/Exams/
 # that it contains. Then, make links to certain folders according 
 # to those tags
 function process_file(){
-#    local_topics=(physics articles books notes notes_personal mathematics)
-#    num_topics=${#local_topics[@]}
-#    subject=$(exiftool -Subject "$1" 2> /dev/null);
-     cadeira=$(basename "$PWD")
-     ano_leti=$(./get_ano.py $(find -type f -iname \*.pdf -print)))
+	#    local_topics=(physics articles books notes notes_personal mathematics)
+	#    num_topics=${#local_topics[@]}
+	#    subject=$(exiftool -Subject "$1" 2> /dev/null);
+	cadeira=$(basename "$PWD")
+	ano_leti=$(./get_ano.py $(find -type f -iname \*.pdf -print)))
 
-    if [ "$subject" != "" ]; then 
-        for ((i = 0; i < $num_topics; i++)); do
-            topic=$(echo $subject | grep -w ${local_topics[$i]})
-            if [ "$topic" != "" ]; then
-                ln -s "$1" /home/simao/documents/${local_topics[$i]}
-            fi
-        done
-    fi
+	if [ "$subject" != "" ]; then 
+		for ((i = 0; i < $num_topics; i++)); do
+			topic=$(echo $subject | grep -w ${local_topics[$i]})
+			if [ "$topic" != "" ]; then
+				ln -s "$1" /home/simao/documents/${local_topics[$i]}
+			fi
+		done
+	fi
 }
 export -f process_file
 

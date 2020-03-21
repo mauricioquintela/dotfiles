@@ -10,9 +10,9 @@ if {[ "$(git pull origin master | grep -c "Already up to date")" -ge 1 ]} &> /de
 else 
 	echo "Do you wish to update Polybar?"
 	select yn in "Yes" "No"
-	case $yn in
-		Yes ) cp ../net_nl.cpp ./src/adapters/net_nl.cpp && ./build.sh && cd $local && printf "\n\n\nUPDATED\n" && return;;
-    		No ) cd $local && echo "Update canceled. Please upgrade manually to update!" && return;;
-	esac
+		case $yn in
+			Yes ) cp ../net_nl.cpp ./src/adapters/net_nl.cpp && ./build.sh && cd $local && printf "\n\n\nUPDATED\n" && return;;
+			No ) cd $local && echo "Update canceled. Please upgrade manually to update!" && return;;
+		esac
 fi
 return

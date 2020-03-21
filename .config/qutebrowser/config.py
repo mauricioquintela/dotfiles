@@ -4,6 +4,7 @@
 ##   qute://help/settings.html
 config.load_autoconfig()
 
+c.content.host_blocking.enabled = True
 
 ##+begin_src python
 #import sys, os
@@ -11,24 +12,25 @@ config.load_autoconfig()
 #config.source("jblock/jblock/integrations/qutebrowser.py")
 ##+end_src
 config.set(
-    "content.host_blocking.lists",
-    [
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt",
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt",
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
-#       "https://www.malwaredomainlist.com/hostslist/hosts.txt",
-#       "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext",
-        "https://raw.githubusercontent.com/olegwukr/polish-privacy-filters/master/anti-adblock.txt",
-    ],
-)
+        "content.host_blocking.lists",
+        [
+#            "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
+#            "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt",
+#            "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
+#            "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
+#            "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt",
+#            "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
+            "https://www.malwaredomainlist.com/hostslist/hosts.txt",
+            "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext",
+            "https://raw.githubusercontent.com/olegwukr/polish-privacy-filters/master/anti-adblock.txt",
+#            "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/legacy.txt",
+#            "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resources.txt",
+            ],
+        )
 
 c.colors.webpage.prefers_color_scheme_dark = True
 
 
-c.content.host_blocking.enabled = True
 
 # Enable JavaScript.
 # Type: Bool
@@ -51,13 +53,22 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # used by prepending the search engine name to the search term, e.g.
 # `:open google qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'rd': 'https://reddit.com/search/?q={}', 'lg': 'http://gen.lib.rus.ec/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def' ,'rx': 'https://arxiv.org/search/?query={}&searchtype=all&source=header', 'zt': 'https://www.zotero.org/mauricioquintela/search/{}/titleCreatorYear/item-list', 'wm': 'https://reference.wolfram.com/search/?q={}', '13': 'https://1337.root.yt/sort-search/{}/time/desc/1/', 'tdm': 'https://technicaldeathmetal.org/?s={}&search=Search', 'pb.o': 'http://piratebayztemzmv.onion/search/{}/0/99/0','imdb': 'https://www.imdb.com/find?q={}&ref_=nv_sr_sm','aur': 'https://aur.archlinux.org/packages/?O=0&K={}', 'ma': 'https://www.metal-archives.com/search?searchString={}&type=band_name'}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'rd': 'https://www.reddit.com/search/?q={}', 'lg': 'http://gen.lib.rus.ec/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def' ,'rx': 'https://arxiv.org/search/?query={}&searchtype=all&source=header', 'zt': 'https://www.zotero.org/mauricioquintela/search/{}/titleCreatorYear/item-list', 'wm': 'https://reference.wolfram.com/search/?q={}', '13': 'https://1337.root.yt/sort-search/{}/time/desc/1/', 'tdm': 'https://technicaldeathmetal.org/?s={}&search=Search', 'pb.o': 'http://piratebayztemzmv.onion/search/{}/0/99/0','imdb': 'https://www.imdb.com/find?q={}&ref_=nv_sr_sm','aur': 'https://aur.archlinux.org/packages/?O=0&K={}', 'ma': 'https://www.metal-archives.com/search?searchString={}&type=band_name'}
 
 # Bindings for normal mode
 config.bind('<Ctrl+Shift+f>', 'hint all spawn --detach mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" --loop-playlist --force-window \'{hint-url}\'')
 
 #block shit
 c.content.host_blocking.lists.append( str(config.configdir) + "/blockedhosts")
+c.content.host_blocking.lists.append( str(config.configdir) + "/uAssets/filters/annoyances.txt")
+c.content.host_blocking.lists.append( str(config.configdir) + "/uAssets/filters/badware.txt")
+c.content.host_blocking.lists.append( str(config.configdir) + "/uAssets/filters/filters.txt")
+c.content.host_blocking.lists.append( str(config.configdir) + "/uAssets/filters/legacy.txt")
+c.content.host_blocking.lists.append( str(config.configdir) + "/uAssets/filters/privacy.txt")
+c.content.host_blocking.lists.append( str(config.configdir) + "/uAssets/filters/resource-abuse.txt")
+c.content.host_blocking.lists.append( str(config.configdir) + "/uAssets/filters/resources.txt")
+c.content.host_blocking.lists.append( str(config.configdir) + "/uAssets/filters/unbreak.txt")
+
 
 
 c.content.proxy = 'http://localhost:8118/'
@@ -855,7 +866,7 @@ c.colors.prompts.bg = '#444444'
 
 ## List of user stylesheet filenames to use.
 ## Type: List of File, or File
-c.content.user_stylesheets = ["userContent.css"]
+#c.content.user_stylesheets = ["userContent.css"]
 
 ## Enable WebGL.
 ## Type: Bool

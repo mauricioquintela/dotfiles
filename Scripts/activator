@@ -68,17 +68,17 @@ function checkMathId(s) {
 }
 
 function genFromMathId(mathid) {
-//	if (!checkMathId(mathid)) {
-//		console.log("Bad MathID!")
-//	} else {
-		activationKey = "";
-		for (let i = 0; i < 14; i++) {
-			activationKey += Math.floor(Math.random() * 10);
-			if (i === 3 || i === 7)
-				activationKey += "-";
-		}
-		console.log("Activation Key: " + activationKey)
-		console.log("Password: " + genPassword(mathid + "$1&" + activationKey, magicNumbers.getRandom()));
-//	}
+	//	if (!checkMathId(mathid)) {
+	//		console.log("Bad MathID!")
+	//	} else {
+	activationKey = "";
+	for (let i = 0; i < 14; i++) {
+		activationKey += Math.floor(Math.random() * 10);
+		if (i === 3 || i === 7)
+			activationKey += "-";
+	}
+	console.log("Activation Key: " + activationKey)
+	console.log("Password: " + genPassword(mathid + "$1&" + activationKey, magicNumbers.getRandom()));
+	//	}
 }
 genFromMathId(mathid);
