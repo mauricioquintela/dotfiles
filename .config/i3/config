@@ -30,7 +30,7 @@ bindsym $mod+s  [instance="dropdown"] scratchpad show
 bindsym $mod+Shift+q kill
 
 #xkcd comic
-bindsym $mod+Ctrl+x exec --no-startup-id sxiv "$(find /HDD/git/xkcd/archive -type f| shuf -n 1)" & sleep 0.1 && i3-msg "[id=$(xdotool getactivewindow)] floating enable"
+bindsym $mod+Ctrl+x exec --no-startup-id sxiv "$(find /HDD/git/xkcd/archive -type f| shuf -n 1)" & sleep 0.3 && i3-msg "[id=$(xdotool getactivewindow)] floating enable"
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
@@ -467,8 +467,8 @@ mode $quicklauncher {
 	bindsym Shift+r exec --no-startup-id i3-msg "[class=(T|t)eamviewer] focus" || teamviewer, mode "default"
 	bindsym m exec --no-startup-id mathematica, mode "default"
 	bindsym c exec --no-startup-id cheese, mode "default"
-	bindsym q exec --no-startup-id i3-msg "[class=(Q|q)utebrowser] focus" || qutebrowser --qt-flag ignore-gpu-blacklist --qt-flag enable-gpu-rasterization --qt-flag enable-native-gpu-memory-buffers --qt-flag num-raster-threads=4, mode "default"
 #	bindsym q exec --no-startup-id qutebrowser, mode "default"
+	bindsym q exec --no-startup-id i3-msg "[class=(Q|q)utebrowser] focus" || qutebrowser --qt-flag ignore-gpu-blacklist --qt-flag enable-gpu-rasterization --qt-flag enable-native-gpu-memory-buffers --qt-flag num-raster-threads=4, mode "default"
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }

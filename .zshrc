@@ -131,7 +131,7 @@ alias sl='ls'
 alias :q='exit'
 alias stahp='~/HDD/git/stahp'
 
-alias config='vim $(find ~/.config/ranger/* ~/.config/polybar/* ~/.config/qutebrowser/* ~/.config/i3/* -type f | fzf)'
+alias config='nvim $(find ~/.config/ranger/* ~/.config/polybar/* ~/.config/qutebrowser/* ~/.config/i3/* -type f | fzf)'
 alias cgit='/usr/bin/git --git-dir=/home/mauricioquintela/dotfiles/ --work-tree=/home/mauricioquintela/' 
 
 alias tlpstart='sudo tlpui && sudo tlp start'
