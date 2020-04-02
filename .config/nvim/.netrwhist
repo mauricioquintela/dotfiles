@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/mauricioquintela/Scripts/X11'
+let g:netrw_dirhist_3='/home/mauricioquintela/Scripts/Wolfram Mathematica 12 Key Generator Online - iBug One_files'
+let g:netrw_dirhist_2='/home/mauricioquintela/Scripts/optimus-manager'
+let g:netrw_dirhist_1='/home/mauricioquintela/Scripts/backup_km'
