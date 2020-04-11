@@ -46,12 +46,13 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # used by prepending the search engine name to the search term, e.g.
 # `:open google qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'rd': 'https://www.reddit.com/search/?q={}', 'lg': 'http://gen.lib.rus.ec/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def' ,'rx': 'https://arxiv.org/search/?query={}&searchtype=all&source=header', 'zt': 'https://www.zotero.org/mauricioquintela/search/{}/titleCreatorYear/item-list', 'wm': 'https://reference.wolfram.com/search/?q={}', '13': 'https://1337.root.yt/sort-search/{}/time/desc/1/', 'tdm': 'https://technicaldeathmetal.org/?s={}&search=Search', 'pb.o': 'http://piratebayztemzmv.onion/search/{}/0/99/0','imdb': 'https://www.imdb.com/find?q={}&ref_=nv_sr_sm','aur': 'https://aur.archlinux.org/packages/?O=0&K={}', 'ma': 'https://www.metal-archives.com/search?searchString={}&type=band_name', 'tl': 'https://www.torrentleech.org/torrents/browse/index/query/{}', 'conj': 'https://conjuga-me.net/verbo-{}'}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'lg': 'http://gen.lib.rus.ec/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def' ,'rx': 'https://arxiv.org/search/?query={}&searchtype=all&source=header', 'wm': 'https://reference.wolfram.com/search/?q={}', '13': 'https://1337.root.yt/sort-search/{}/time/desc/1/', 'tdm': 'https://technicaldeathmetal.org/?s={}&search=Search', 'imdb': 'https://www.imdb.com/find?q={}&ref_=nv_sr_sm','aur': 'https://aur.archlinux.org/packages/?O=0&K={}', 'ma': 'https://www.metal-archives.com/search?searchString={}&type=band_name', 'tl': 'https://www.torrentleech.org/torrents/browse/index/query/{}', 'conj': 'https://conjuga-me.net/verbo-{}'}
 
 # Bindings for normal mode
 config.bind('<Ctrl+Shift+f>', 'hint all spawn --detach mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" --loop-playlist --force-window \'{hint-url}\'')
-config.bind('<Ctrl+Shift+a>', 'hint all spawn --detach waterfox-current https://sci-hub.shop/\'{hint-url}\'')
-
+config.bind('<Ctrl+Shift+g>', 'hint all spawn --detach mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" --loop-playlist --hwdec=vaapi --force-window \'{hint-url}\'')
+config.bind('<Ctrl+Shift+a>', 'hint all spawn --detach waterfox-current https://sci-hub.tw/\'{hint-url}\'')
+config.bind('<Ctrl+Alt+a>', 'hint all spawn --detach waterfox-current \'{hint-url}\'')
 
 
 

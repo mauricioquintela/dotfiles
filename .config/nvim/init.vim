@@ -15,7 +15,7 @@ execute pathogen#infect()
 " Some basics:
 set nocompatible
 filetype plugin on
-syntax on
+syntax enable
 set encoding=utf-8
 set number
 set relativenumber
@@ -93,13 +93,13 @@ map <C-p> "+P
 function! s:goyo_leave()
 	:colorscheme default
 	set background=dark
-	:hi Normal ctermbg=black guibg=black
+"	:hi Normal ctermbg=black guibg=black
 endfunction
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 set termguicolors
 highlight Normal ctermbg=Black
 highlight NonText ctermbg=Black
-highlight Normal ctermbg=black guibg=black
+"highlight Normal ctermbg=black guibg=black
 
 
 
@@ -110,3 +110,7 @@ map <Leader>sp :SplitVifm<CR>
 map <Leader>dv :DiffVifm<CR>
 map <Leader>tv :TabVifm<CR>
 
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2

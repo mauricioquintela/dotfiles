@@ -28,7 +28,7 @@ ZSH_THEME="agnoster"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
-
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
 
@@ -126,7 +126,7 @@ alias update='yay -Syu --sudoloop && yes | yay -Sc && sudo snap refresh'
 alias ins='yay -S --sudoloop'
 alias uplyx='~/Scripts/upgrade_lyx.sh'
 
-alias cp='/home/mauricioquintela/Scripts/cp_better' 
+#alias cp='/home/mauricioquintela/Scripts/cp_better' 
 alias sl='ls'
 alias :q='exit'
 alias stahp='~/HDD/git/stahp'
