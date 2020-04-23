@@ -6,8 +6,15 @@ killall -q polybar
 # Wait until the processes have been shut down
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-# Launch bar1 and bar2
-polybar -r example-intel &
-polybar -r example-nvidia &
+# Launch bar for intel or nvidia gpu, depending on the connected screen
+input_mon=$(xrandr | grep eDP | awk '{print $1}')
+if [ "$input_mon" = "eDP1" ]; then
+	polybar -r example-intel &
+	echo "Bars launched..."
+	return
+else
+	polybar -r example-nvidia &
+	echo "Bars launched..."
+	return
+fi
 
-echo "Bars launched..."

@@ -20,6 +20,7 @@ config.set(
         [
             "https://www.malwaredomainlist.com/hostslist/hosts.txt",
             "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext",
+            'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts',
             ],
         )
 
@@ -46,21 +47,20 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # used by prepending the search engine name to the search term, e.g.
 # `:open google qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'lg': 'http://gen.lib.rus.ec/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def' ,'rx': 'https://arxiv.org/search/?query={}&searchtype=all&source=header', 'wm': 'https://reference.wolfram.com/search/?q={}', '13': 'https://1337.root.yt/sort-search/{}/time/desc/1/', 'tdm': 'https://technicaldeathmetal.org/?s={}&search=Search', 'imdb': 'https://www.imdb.com/find?q={}&ref_=nv_sr_sm','aur': 'https://aur.archlinux.org/packages/?O=0&K={}', 'ma': 'https://www.metal-archives.com/search?searchString={}&type=band_name', 'tl': 'https://www.torrentleech.org/torrents/browse/index/query/{}', 'conj': 'https://conjuga-me.net/verbo-{}'}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'lg': 'http://libgen.is/search.php?req={}&open=0&res=100&view=simple&phrase=1&column=def' ,'rx': 'https://arxiv.org/search/?query={}&searchtype=all&source=header', 'wm': 'https://reference.wolfram.com/search/?q={}', '13': 'https://1337.root.yt/sort-search/{}/time/desc/1/', 'tdm': 'https://technicaldeathmetal.org/?s={}&search=Search', 'imdb': 'https://www.imdb.com/find?q={}&ref_=nv_sr_sm','aur': 'https://aur.archlinux.org/packages/?O=0&K={}', 'ma': 'https://www.metal-archives.com/search?searchString={}&type=band_name', 'tl': 'https://www.torrentleech.org/torrents/browse/index/query/{}', 'conj': 'https://conjuga-me.net/verbo-{}'}
 
 # Bindings for normal mode
-config.bind('<Ctrl+Shift+f>', 'hint all spawn --detach mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" --loop-playlist --force-window \'{hint-url}\'')
-config.bind('<Ctrl+Shift+g>', 'hint all spawn --detach mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best" --loop-playlist --hwdec=vaapi --force-window \'{hint-url}\'')
-config.bind('<Ctrl+Shift+a>', 'hint all spawn --detach waterfox-current https://sci-hub.tw/\'{hint-url}\'')
+config.bind('<Ctrl+Shift+f>', 'hint all spawn --detach mpv --ytdl-format="bestvideo[height<=?1080][vcodec!=vp9]+bestaudio/best" --keep-open --force-window \'{hint-url}\'')
+config.bind('<Ctrl+Shift+p>', 'hint all spawn --detach mpv --ytdl-format="bestvideo[height<=?1080][vcodec!=vp9]+bestaudio/best" --loop-playlist --force-window \'{hint-url}\'')
+config.bind('<Ctrl+Shift+a>', 'hint all spawn --detach waterfox-current https://sci-hub.se/\'{hint-url}\'')
 config.bind('<Ctrl+Alt+a>', 'hint all spawn --detach waterfox-current \'{hint-url}\'')
-
 
 
 c.content.proxy = 'http://localhost:8118/'
 #c.content.proxy = 'socks://localhost:9050/'
 
 #general stuff
-c.editor.command = ["kitty", "-title", "scratchpad", "-geometry", "86x24+40+60", "-e", "vim", "-f", "{}"]
+c.editor.command = ["kitty", "-title", "scratchpad", "-geometry", "86x24+40+60", "-e", "nvim", "-f", "{}"]
 c.downloads.location.directory = '/HDD/Downloads/'
 
 
@@ -84,7 +84,7 @@ c.colors.webpage.prefers_color_scheme_dark = True
 
 ## Always restore open sites when qutebrowser is reopened.
 ## Type: Bool
-# c.auto_save.session = False
+c.auto_save.session = False
 
 ## Backend to use to display websites. qutebrowser supports two different
 ## web rendering engines / backends, QtWebKit and QtWebEngine. QtWebKit
@@ -563,12 +563,12 @@ c.colors.prompts.bg = '#444444'
 ##   - multiple-tabs: Show a confirmation if multiple tabs are opened.
 ##   - downloads: Show a confirmation if downloads are running
 ##   - never: Never show a confirmation.
-# c.confirm_quit = ['never']
+c.confirm_quit = ['downloads']
 
 ## Automatically start playing `<video>` elements. Note: On Qt < 5.11,
 ## this option needs a restart and does not support URL patterns.
 ## Type: Bool
-# c.content.autoplay = True
+c.content.autoplay = False
 
 ## Enable support for the HTML 5 web application cache feature. An
 ## application cache acts like an HTTP cache in some sense. For documents
@@ -627,7 +627,7 @@ c.colors.prompts.bg = '#444444'
 
 ## Try to pre-fetch DNS entries to speed up browsing.
 ## Type: Bool
-# c.content.dns_prefetch = False
+c.content.dns_prefetch = True
 
 ## Expand each subframe to its contents. This will flatten all the frames
 ## to become one scrollable page.
@@ -640,7 +640,7 @@ c.colors.prompts.bg = '#444444'
 ##   - true
 ##   - false
 ##   - ask
-# c.content.geolocation = 'ask'
+c.content.geolocation = 'ask'
 
 ## Value to send in the `Accept-Language` header. Note that the value
 ## read from JavaScript is always the global value.
@@ -655,7 +655,7 @@ c.colors.prompts.bg = '#444444'
 ## qutebrowser asks websites to not track your identity. If set to null,
 ## the DNT header is not sent at all.
 ## Type: Bool
-# c.content.headers.do_not_track = True
+c.content.headers.do_not_track = True
 
 ## When to send the Referer header. The Referer header tells websites
 ## from which website you were coming from when visiting them. No restart
@@ -795,7 +795,8 @@ c.colors.prompts.bg = '#444444'
 ## still be downloaded by clicking the download button in the pdf.js
 ## viewer.
 ## Type: Bool
-# c.content.pdfjs = False
+#c.content.pdfjs = True
+c.content.pdfjs = False
 
 ## Allow websites to request persistent storage quota via
 ## `navigator.webkitPersistentStorage.requestQuota`.
@@ -808,7 +809,7 @@ c.colors.prompts.bg = '#444444'
 
 ## Enable plugins in Web pages.
 ## Type: Bool
-# c.content.plugins = False
+c.content.plugins = True
 
 ## Draw the background color and images also when the page is printed.
 ## Type: Bool
@@ -869,7 +870,7 @@ c.colors.prompts.bg = '#444444'
 ## Limit fullscreen to the browser window (does not expand to fill the
 ## screen).
 ## Type: Bool
-# c.content.windowed_fullscreen = False
+c.content.windowed_fullscreen = False
 
 ## Monitor load requests for cross-site scripting attempts. Suspicious
 ## scripts will be blocked and reported in the inspector's JavaScript
@@ -1240,7 +1241,7 @@ c.colors.prompts.bg = '#444444'
 ##   - qt-quick: Tell Qt Quick to use a software renderer instead of OpenGL. (`QT_QUICK_BACKEND=software`)
 ##   - chromium: Tell Chromium to disable GPU support and use Skia software rendering instead. (`--disable-gpu`)
 ##   - none: Don't force software rendering.
-# c.qt.force_software_rendering = 'none'
+c.qt.force_software_rendering = 'none'
 
 ## Turn on Qt HighDPI scaling. This is equivalent to setting
 ## QT_AUTO_SCREEN_SCALE_FACTOR=1 or QT_ENABLE_HIGHDPI_SCALING=1 (Qt >=
@@ -1282,7 +1283,7 @@ c.colors.prompts.bg = '#444444'
 ## Enable smooth scrolling for web pages. Note smooth scrolling does not
 ## work with the `:scroll-px` command.
 ## Type: Bool
-# c.scrolling.smooth = False
+c.scrolling.smooth = True
 
 ## When to find text on a page case-insensitively.
 ## Type: IgnoreCase

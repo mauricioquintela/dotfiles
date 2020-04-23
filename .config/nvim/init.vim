@@ -2,6 +2,8 @@ let mapleader =" "
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'jez/vim-superman'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'LukeSmithxyz/vimling'
 Plug 'vimwiki/vimwiki'
@@ -19,8 +21,11 @@ syntax enable
 set encoding=utf-8
 set number
 set relativenumber
+set mouse=a
+set ignorecase
+set smartcase
 set modeline	
-:colorscheme default
+:colorscheme dracula
 set background=dark
 " Enable autocompletion:
 set wildmode=longest,list,full
@@ -91,7 +96,7 @@ vnoremap <C-c> "*Y :let @+=@*<CR>
 map <C-p> "+P
 
 function! s:goyo_leave()
-	:colorscheme default
+	:colorscheme dracula
 	set background=dark
 "	:hi Normal ctermbg=black guibg=black
 endfunction
@@ -114,3 +119,6 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
+
+set clipboard=unnamedplus
+:colorscheme dracula

@@ -24,13 +24,13 @@ bindsym Control+KP_Enter exec --no-startup-id kitty
 exec --no-startup-id kitty --name=dropdown
 for_window [instance="dropdown"] floating enable, resize set 640 480, move position 342 180;
 for_window [instance="dropdown"] move scratchpad; [instance="dropdown"] scratchpad show; move scratchpad
-bindsym $mod+s  [instance="dropdown"] scratchpad show
+bindsym $mod+s [instance="dropdown"] scratchpad show
 
 # Window kill command
 bindsym $mod+Shift+q kill
 
 #xkcd comic
-bindsym $mod+Ctrl+x exec --no-startup-id sxiv "$(find /HDD/git/xkcd/archive -type f| shuf -n 1)" & sleep 0.3 && i3-msg "[id=$(xdotool getactivewindow)] floating enable"
+bindsym $mod+Ctrl+x exec --no-startup-id sxiv -N xkcd -q "$(find /HDD/git/xkcd/archive -type f| shuf -n 1)"
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
@@ -63,8 +63,8 @@ bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+h split h;exec notify-send --expire-time=1000 'tile horizontally'
-bindsym $mod+v split v;exec notify-send --expire-time=1000 'tile vertically'
+bindsym $mod+h split h;exec --no-startup-id notify-send --expire-time=1000 'tile horizontally'
+bindsym $mod+v split v;exec --no-startup-id notify-send --expire-time=1000 'tile vertically'
 bindsym $mod+q split toggle
 
 # toggle fullscreen mode for the focused container
@@ -296,6 +296,7 @@ for_window [class="Firefox" window_role="About"] floating enable
 assign [class="Thunderbird"] $ws9
 assign [class="Discord"] $ws10
 assign [class="qutebrowser"] $ws3
+for_window [class="(?i)sxiv" instance="xkcd"] floating enable 
 
 # switch to workspace with urgent window automatically
 #for_window [urgent=latest] focus
@@ -454,21 +455,21 @@ mode $hdmi_side {
 set $quicklauncher "Run [f] [q] [r/Ctrl+r] [l] [m] [t] [n] [z] [d]"
 bindsym $mod+x mode $quicklauncher
 mode $quicklauncher {
-	bindsym f exec i3-msg "[class=(W|w)aterfox-current] focus" || waterfox-current, mode "default"
-	bindsym n exec thunar, mode "default"
-	bindsym l exec i3-msg "[class=(L|l)yx] focus" || lyx, mode "default"
-	bindsym t exec i3-msg "[class=(T|t)hunderbird] focus" || thunderbird-beta, mode "default"
+	bindsym f exec --no-startup-id i3-msg "[class=(W|w)aterfox-current] focus" || waterfox-current, mode "default"
+	bindsym n exec --no-startup-id thunar, mode "default"
+	bindsym l exec --no-startup-id i3-msg "[class=(L|l)yx] focus" || lyx, mode "default"
+	bindsym t exec --no-startup-id i3-msg "[class=(T|t)hunderbird] focus" || thunderbird-beta, mode "default"
 #	bindsym Shift+t exec --no-startup-id tor-browser, mode "default"
-	bindsym s exec syncthing, mode "default"
-	bindsym z exec zotero, mode "default"
-	bindsym r exec kitty -e ranger, mode "default"
-	bindsym Ctrl+r exec kitty -e nnn, mode "default"
-	bindsym d exec waterfox-current https://drive.google.com/drive/u/0/shared-drives, mode "default"
-#	bindsym Shift+r exec i3-msg "[class=(T|t)eamviewer] focus" || teamviewer, mode "default"
-	bindsym m exec mathematica, mode "default"
-#	bindsym c exec cheese, mode "default"
-#	bindsym q exec qutebrowser, mode "default"
-	bindsym q exec i3-msg "[class=(Q|q)utebrowser] focus" || qutebrowser --qt-flag ignore-gpu-blacklist --qt-flag enable-gpu-rasterization --qt-flag enable-native-gpu-memory-buffers --qt-flag num-raster-threads=8, mode "default"
+	bindsym s exec --no-startup-id syncthing, mode "default"
+	bindsym z exec --no-startup-id zotero, mode "default"
+	bindsym r exec --no-startup-id kitty -e ranger, mode "default"
+	bindsym Ctrl+r exec --no-startup-id kitty -e nnn, mode "default"
+	bindsym d exec --no-startup-id waterfox-current https://drive.google.com/drive/u/0/shared-drives, mode "default"
+#	bindsym Shift+r exec --no-startup-id i3-msg "[class=(T|t)eamviewer] focus" || teamviewer, mode "default"
+	bindsym m exec --no-startup-id mathematica, mode "default"
+#	bindsym c exec --no-startup-id cheese, mode "default"
+#	bindsym q exec --no-startup-id qutebrowser, mode "default"
+	bindsym q exec --no-startup-id i3-msg "[class=(Q|q)utebrowser] focus" || qutebrowser --qt-flag ignore-gpu-blacklist --qt-flag enable-gpu-rasterization --qt-flag enable-native-gpu-memory-buffers --qt-flag num-raster-threads=8, mode "default"
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
@@ -508,6 +509,10 @@ exec --no-startup-id udiskie
 
 #always want numpad on
 exec --no-startup-id numlockx
+
+#clipboard manager
+exec --no-startup-id clipit
+
 
 #background 
 #randomizer
