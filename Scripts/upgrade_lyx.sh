@@ -5,6 +5,7 @@ need=$(ls | grep update_needed)
 if {[ "$(git pull origin master | grep -c "Already up to date")" -ge 1 ]}; then
 	if [ "$need" = "update_needed" ]; then
 		printf "\n\n\nUpdate in queue\n\n"
+		printf "\n\n\nStarting update\n\n"
 		./autogen.sh
 		./configure
 		make -j4
