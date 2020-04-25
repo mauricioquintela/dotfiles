@@ -10,11 +10,11 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 input_mon=$(xrandr | grep eDP | awk '{print $1}')
 if [ "$input_mon" = "eDP1" ]; then
 	polybar -r example-intel &
-	echo "Bars launched..."
+	echo "Intel GPU polybar launched..."
 	return
 else
 	polybar -r example-nvidia &
-	echo "Bars launched..."
+	echo "Nvidia GPU polybar launched..."
 	return
 fi
 
