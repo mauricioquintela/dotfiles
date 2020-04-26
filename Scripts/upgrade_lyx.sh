@@ -21,7 +21,7 @@ if {[ "$(git pull origin master | grep -c "Already up to date")" -ge 1 ]}; then
 		return
 	fi
 else 
-	printf "\n\nDo you wish to update LyX?"
+	printf "\n\nDo you wish to update LyX?\n"
 	select yn in "Yes" "No"
 		case $yn in
 			Yes) ./autogen.sh
