@@ -1,4 +1,3 @@
-g dotfiles
 Collection of: 
 
       -> dotfiles; 
@@ -6,7 +5,3 @@ Collection of:
       -> configs; 
       
       -> scripts; 
-      
-      -> mathematica templates;
-      
-      -> data from polynomial method (thesis).
