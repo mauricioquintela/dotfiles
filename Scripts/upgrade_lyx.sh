@@ -9,7 +9,7 @@ if {[ "$(git pull origin master | grep -c "Already up to date")" -ge 1 ]}; then
 		./autogen.sh
 		./configure
 		make -j4
-		notify-send -u critical -t 50000 "UPDATE DONE! WAITING FOR PASSWORD\!"
+		notify-send -u critical -t 10000 "UPDATE DONE! WAITING FOR PASSWORD\!"
 		sudo make -j4 install
 		rm -rf update_needed
 		cd $local
@@ -27,7 +27,7 @@ else
 			Yes) ./autogen.sh
 				./configure
 				make -j4
-				notify-send -u critical -t 50000 "UPDATE DONE! WAITING FOR PASSWORD\!"
+				notify-send -u critical -t 10000 "UPDATE DONE! WAITING FOR PASSWORD\!"
 				sudo make -j4 install
 				rm -rf update_needed
 				cd $local
