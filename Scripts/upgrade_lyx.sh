@@ -24,19 +24,19 @@ if {[ "$(git pull origin master | grep -c "Already up to date")" -ge 1 ]}; then
 			cd $local
 			return
 		fi
+	elif [ "$sudo_need" = "sudo_needed" ]; then
+		notify-send -u critical -t 10000 "WAITING FOR PASSWORD!"
+		sudo make install
+		rm -rf sudo_needed
+		cd $local
+		printf "\n\n\nUPDATED\n"
+		return
 	else	
 		echo "No Updates Available!"
 		cd $local
 		return
 	fi
-elif [ "$sudo_need" = "sudo_needed" ]; then
-	notify-send -u critical -t 10000 "WAITING FOR PASSWORD!"
-	sudo make install
-	rm -rf sudo_needed
-	cd $local
-	printf "\n\n\nUPDATED\n"
-	return
-fi	
+fi
 else 
 	printf "\n\nDo you wish to update LyX?\n"
 	select yn in "Yes" "No"
