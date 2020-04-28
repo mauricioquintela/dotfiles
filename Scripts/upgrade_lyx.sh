@@ -36,7 +36,6 @@ if {[ "$(git pull origin master | grep -c "Already up to date")" -ge 1 ]}; then
 		cd $local
 		return
 	fi
-fi
 else 
 	printf "\n\nDo you wish to update LyX?\n"
 	select yn in "Yes" "No"
