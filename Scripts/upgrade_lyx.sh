@@ -19,13 +19,13 @@ if {[ "$(git pull origin master | grep -c "Already up to date")" -ge 1 ]}; then
 			return
 		else
 			touch sudo_needed
-			printf "\n\n\nPASSWORD NEEDED! RUN \"uplyx\" AGAIN"
+			printf "\n\n\nPASSWORD NEEDED! RUN \"uplyx\" AGAIN\n"
 			rm -rf update_needed
 			cd $local
 			return
 		fi
 	elif [ "$sudo_need" = "sudo_needed" ]; then
-		notify-send -u critical -t 10000 "WAITING FOR PASSWORD!"
+		printf "\n\n\nSUDO PASSWORD NEEDED TO FINISH INSTALL\n"
 		sudo make install
 		rm -rf sudo_needed
 		cd $local
@@ -50,7 +50,7 @@ else
 					cd $local
 				else
 					touch sudo_needed
-					printf "\n\n\nPASSWORD NEEDED! RUN \"uplyx\" AGAIN"
+					printf "\n\n\nPASSWORD NEEDED! RUN \"uplyx\" AGAIN\n"
 					cd $local
 				fi
 				return;;
