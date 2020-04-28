@@ -32,7 +32,7 @@ if {[ "$(git pull origin master | grep -c "Already up to date")" -ge 1 ]}; then
 		printf "\n\n\nUPDATED\n"
 		return
 	else	
-		echo "No Updates Available!"
+		printf "\n\n\nNo Updates Available!\n"
 		cd $local
 		return
 	fi
