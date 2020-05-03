@@ -47,7 +47,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # used by prepending the search engine name to the search term, e.g.
 # `:open google qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'lg': 'http://libgen.is/search.php?req={}&open=0&res=100&view=simple&phrase=1&column=def' ,'rx': 'https://arxiv.org/search/?query={}&searchtype=all&source=header', 'wm': 'https://reference.wolfram.com/search/?q={}', '13': 'https://1337.root.yt/sort-search/{}/time/desc/1/', 'tdm': 'https://technicaldeathmetal.org/?s={}&search=Search', 'imdb': 'https://www.imdb.com/find?q={}&ref_=nv_sr_sm','aur': 'https://aur.archlinux.org/packages/?O=0&K={}', 'ma': 'https://www.metal-archives.com/search?searchString={}&type=band_name', 'tl': 'https://www.torrentleech.org/torrents/browse/index/query/{}', 'conj': 'https://conjuga-me.net/verbo-{}'}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'lg': 'https://libgen.pw/search/all?search={}&collection=all' ,'rx': 'https://arxiv.org/search/?query={}&searchtype=all&source=header', 'wm': 'https://reference.wolfram.com/search/?q={}', '13': 'https://1337.root.yt/sort-search/{}/time/desc/1/', 'tdm': 'https://technicaldeathmetal.org/?s={}&search=Search', 'imdb': 'https://www.imdb.com/find?q={}&ref_=nv_sr_sm','aur': 'https://aur.archlinux.org/packages/?O=0&K={}', 'ma': 'https://www.metal-archives.com/search?searchString={}&type=band_name', 'tl': 'https://www.torrentleech.org/torrents/browse/index/query/{}', 'conj': 'https://conjuga-me.net/verbo-{}'}
 
 # Bindings for normal mode
 config.bind('<Ctrl+Shift+f>', 'hint all spawn --detach mpv --ytdl-format="((bestvideo[height<=?1080][vcodec!=vp9]/bestvideo[height<=?1080])+bestaudio)/best" --ytdl-raw-options="external-downloader=aria2c" --ytdl-raw-options-append="external-downloader-args=\'-c -j 5 -x 4 -s 5 -k 10M\'" --profile=big-cache --keep-open  --force-window \'{hint-url}\'')
@@ -84,7 +84,7 @@ c.colors.webpage.prefers_color_scheme_dark = True
 
 ## Always restore open sites when qutebrowser is reopened.
 ## Type: Bool
-c.auto_save.session = False
+c.auto_save.session = True
 
 ## Backend to use to display websites. qutebrowser supports two different
 ## web rendering engines / backends, QtWebKit and QtWebEngine. QtWebKit
@@ -1781,7 +1781,7 @@ c.tabs.background = True
 # config.bind('l', 'scroll right')
 # config.bind('m', 'quickmark-save')
 # config.bind('n', 'search-next')
-# config.bind('o', 'set-cmd-text -s :open')
+config.bind('o', 'set-cmd-text -s :open -s')
 # config.bind('pP', 'open -- {primary}')
 # config.bind('pp', 'open -- {clipboard}')
 # config.bind('q', 'record-macro')
