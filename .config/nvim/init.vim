@@ -2,7 +2,7 @@ let mapleader =" "
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'jez/vim-superman'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'LukeSmithxyz/vimling'
@@ -14,7 +14,7 @@ cal plug#end()
 
 
 execute pathogen#infect()
-" Some basics:
+" Some Basics:
 set nocompatible
 filetype plugin on
 syntax enable
@@ -25,15 +25,15 @@ set mouse=a
 set ignorecase
 set smartcase
 set modeline	
-:colorscheme dracula
+":colorscheme dracula
 set background=dark
-" Enable autocompletion:
+" Enable Autocompletion:
 set wildmode=longest,list,full
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-" NnnPicker stuff
+" Nnnpicker Stuff
 map <leader>n :NnnPicker<CR>
-" Or pass a dictionary with window size
+" Or Pass A Dictionary With Window Size
 let g:nnn#layout = { 'left': '~20%' } " or right, up, down
 
 
@@ -121,4 +121,8 @@ set nofoldenable
 set foldlevel=2
 
 set clipboard=unnamedplus
-:colorscheme dracula
+":colorscheme dracula
+
+" Turn to titlecase
+map <Leader>tc :s/\v<(.)(\w*)/\u\1\L\2/g<CR> :nohl<CR>
+nnoremap <silent> <C-l> :nohl<CR><C-l>

@@ -8,7 +8,7 @@ WIDTH=28
 WIDTH_WIDE=24
 THEME=material
 
-# Color Settings of Icon shown in Polybar
+# Color Settings Of Icon Shown In Polybar
 COLOR_DISCONNECTED='#000'       # Device Disconnected
 COLOR_NEWDEVICE='#ff0'          # New Device
 COLOR_BATTERY_90='#fff'         # Battery >= 90

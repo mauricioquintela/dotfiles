@@ -41,6 +41,7 @@ else
 	select yn in "Yes" "No"
 		case $yn in
 			Yes) rm -rf update_needed
+				rm -rf sudo_needed
 				./autogen.sh
 				./configure
 				make -j4
@@ -55,6 +56,7 @@ else
 				fi
 				return;;
 			No) touch update_needed
+				rm -rf sudo_needed
 				cd $local
 				echo "Update in queue! Run \"uplyx\" again to update!"
 				return;;
