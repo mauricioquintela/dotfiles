@@ -471,7 +471,10 @@ label-underline = #4bffdc
 [module/updates-arch-combined]
 type = custom/script
 exec = ~/.config/polybar/scripts/pacman.sh
+tail = true
+click-left = "kill -USR1 $(pgrep --oldest --parent %pid%)" 
 interval = 3600
+label-underline = #4bffdc
 
 [module/battery]
 type = internal/battery
