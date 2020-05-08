@@ -72,9 +72,11 @@ show_menu () {
 		*'Browse Files')
 			if "$(qdbus --literal org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/sftp" org.kde.kdeconnect.device.sftp.isMounted)" == "false"; then
 				qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/sftp" org.kde.kdeconnect.device.sftp.mount
-				thunar "/run/user/1000/$DEV_ID"
+				f_id=$(echo "$DEV_ID" | sed 's/-//g')
+				thunar "/run/user/1000/$f_id" &
 			else
-				thunar "/run/user/1000/$DEV_ID"
+				f_id=$(echo "$DEV_ID" | sed 's/-//g')
+				thunar "/run/user/1000/$f_id" &
 			fi
 			qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID/sftp" org.kde.kdeconnect.device.sftp.startBrowsing;;
 		*'Send SMS' )
