@@ -17,7 +17,7 @@ while true; do
 	if [ "$updates" -gt 0 ]; then
 		echo "# $updates_arch + $updates_aur"
 	else
-		echo "# 0"
+		echo ""
 	fi
 	sleep 3600 &
 	wait
