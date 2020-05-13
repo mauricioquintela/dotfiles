@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+#repo  git://git.lyx.org/lyx.git
+
 local=$(pwd)
 cd ~/HDD/git/lyx/
 need=$(ls | grep update_needed)
