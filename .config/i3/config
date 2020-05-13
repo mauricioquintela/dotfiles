@@ -32,6 +32,10 @@ bindsym $mod+Shift+q kill
 #xkcd comic
 bindsym $mod+Ctrl+x exec --no-startup-id sxiv -N xkcd -q "$(find /HDD/git/xkcd/archive -type f| shuf -n 1)"
 
+#brightness min
+bindsym $mod+Ctrl+l exec --no-startup-id light -S 1
+bindsym $mod+Ctrl+Shift+l exec --no-startup-id light -S 188
+
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
 
