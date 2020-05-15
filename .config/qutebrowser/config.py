@@ -85,6 +85,7 @@ c.colors.webpage.prefers_color_scheme_dark = True
 ## Always restore open sites when qutebrowser is reopened.
 ## Type: Bool
 c.auto_save.session = True
+#c.auto_save.session = False
 
 ## Backend to use to display websites. qutebrowser supports two different
 ## web rendering engines / backends, QtWebKit and QtWebEngine. QtWebKit

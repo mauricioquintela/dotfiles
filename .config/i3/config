@@ -296,6 +296,7 @@ for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] border normal
 for_window [class="Xfburn"] floating enable
+for_window [title="Settings — Albert"] floating enable
 for_window [class="Firefox" window_role="About"] floating enable
 assign [class="Thunderbird"] $ws9
 assign [class="Discord"] $ws10
