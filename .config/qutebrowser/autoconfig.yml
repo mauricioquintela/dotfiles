@@ -16,5 +16,7 @@ settings:
     https://www.instagram.com: true
     https://www.reddit.com: false
     https://www.x1337x.se: false
+  content.user_stylesheets:
+    global: null
   scrolling.smooth:
     global: true
