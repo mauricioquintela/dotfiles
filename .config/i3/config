@@ -41,6 +41,7 @@ bindsym $mod+Ctrl+Shift+l exec --no-startup-id light -S 188
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+Ctrl+d exec --no-startup-id rofi -show emoji -modi emoji
 
 # change focus
 bindsym $mod+j focus left
@@ -305,6 +306,12 @@ assign [class="Thunderbird"] $ws9
 assign [class="Discord"] $ws10
 assign [class="qutebrowser"] $ws3
 for_window [class="(?i)sxiv" instance="xkcd"] floating enable 
+#zoom shit
+for_window [class="(?i)Zoom" title="Settings"] floating enable 
+for_window [class="(?i)Zoom" title="Participants"] floating enable 
+for_window [class="(?i)Zoom" title="Zoom Group Chat"] floating enable 
+
+#for_window [class="(?i)smplayer"] fullscreen disable
 
 # switch to workspace with urgent window automatically
 #for_window [urgent=latest] focus

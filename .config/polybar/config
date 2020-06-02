@@ -351,7 +351,9 @@ type = custom/script
 exec = ~/.config/polybar/scripts/network_signal.sh
 tail = true
 click-left = "kill -USR1 $(pgrep --oldest --parent %pid%)" 
-click-right = "kitty -e sudo wifi-menu"
+click-middle = "kitty -e sudo wifi-menu"
+click-right = ~/.config/polybar/scripts/network_name.sh
+
 label-underline = #42d1f4
 
 [module/down-speed]
@@ -474,6 +476,7 @@ type = custom/script
 exec = ~/.config/polybar/scripts/pacman.sh
 tail = true
 click-left = "kill -USR1 $(pgrep --oldest --parent %pid%)" 
+;click-right = "kitty -e $(yay -Syu --sudoloop --nodiffmenu --noeditmenu && yes | yay -Sc)"
 label-underline = #4bffdc
 
 [module/battery]
