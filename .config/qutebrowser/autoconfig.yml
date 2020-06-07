@@ -10,6 +10,7 @@ settings:
     global: true
   content.notifications:
     https://1337.root.yt: true
+    https://play.pokemonshowdown.com: true
     https://web.whatsapp.com: true
     https://www.cmscritic.com: false
     https://www.infoworld.com: false

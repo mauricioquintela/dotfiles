@@ -351,7 +351,7 @@ type = custom/script
 exec = ~/.config/polybar/scripts/network_signal.sh
 tail = true
 click-left = "kill -USR1 $(pgrep --oldest --parent %pid%)" 
-click-middle = "kitty -e sudo wifi-menu"
+click-middle = "kitty -e sudo wifi-menu &"
 click-right = ~/.config/polybar/scripts/network_name.sh
 
 label-underline = #42d1f4

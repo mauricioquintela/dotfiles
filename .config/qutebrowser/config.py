@@ -1737,7 +1737,7 @@ c.tabs.background = True
 # config.bind('L', 'forward')
 # config.bind('M', 'bookmark-add')
 # config.bind('N', 'search-prev')
-# config.bind('O', 'set-cmd-text -s :open -t')
+# config.bind('O', 'set-cmd-text -s :open -s -t ')
 # config.bind('PP', 'open -t -- {primary}')
 # config.bind('Pp', 'open -t -- {clipboard}')
 # config.bind('R', 'reload -f')

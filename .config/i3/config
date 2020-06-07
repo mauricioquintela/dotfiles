@@ -339,8 +339,8 @@ set $mode_shutdown [Enter] Shutdown, [Escape] Cancel
 mode "$mode_system" {
     #bindsym l exec --no-startup-id ~/.config/i3/scripts/scrlock.sh, mode "default"
     bindsym l exec --no-startup-id "i3lock-fancy-rapid 5 3", mode "default"
-    bindsym Shift+l exec --no-startup-id ~/.config/i3/scripts/physlock, mode "default"
-    bindsym s exec --no-startup-id "~/.config/i3/scripts/physlock && systemctl suspend", mode "default"
+    bindsym Shift+l exec --no-startup-id dm-tool lock, mode "default"
+    bindsym s exec --no-startup-id "dm-tool lock && systemctl suspend", mode "default"
 
 #    bindsym s exec --no-startup-id i3lock-fancy; exec systemctl suspend, mode "default"
     bindsym h exec --no-startup-id systemctl hybrid-sleep, mode "default"
