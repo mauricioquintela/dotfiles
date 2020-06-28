@@ -105,10 +105,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume $(pacmd
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute $(pacmd list-sinks | awk -F ' ' '{print $3}' | sed -sn 2p) toggle"
 
 # Player controls 
-bindsym XF86AudioPlay exec --no-startup-id playerctl -a play-pause
-bindsym XF86AudioNext exec --no-startup-id playerctl -a next
-bindsym XF86AudioPrev exec --no-startup-id playerctl -a previous
-bindsym XF86AudioStop exec --no-startup-id playerctl -a stop
+bindsym XF86AudioPlay exec --no-startup-id playerctl -p clementine play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl -p clementine next
+bindsym XF86AudioPrev exec --no-startup-id playerctl -p clementine previous
+bindsym XF86AudioStop exec --no-startup-id playerctl -p clementine stop
 
 # Screen brightness controls
 bindsym $mod+KP_Add exec --no-startup-id light -A 5 
@@ -339,8 +339,8 @@ set $mode_shutdown [Enter] Shutdown, [Escape] Cancel
 mode "$mode_system" {
     #bindsym l exec --no-startup-id ~/.config/i3/scripts/scrlock.sh, mode "default"
     bindsym l exec --no-startup-id "i3lock-fancy-rapid 5 3", mode "default"
-    bindsym Shift+l exec --no-startup-id dm-tool lock, mode "default"
-    bindsym s exec --no-startup-id "dm-tool lock && systemctl suspend", mode "default"
+    bindsym Shift+l exec --no-startup-id i3lock, mode "default"
+    bindsym s exec --no-startup-id "systemctl suspend", mode "default"
 
 #    bindsym s exec --no-startup-id i3lock-fancy; exec systemctl suspend, mode "default"
     bindsym h exec --no-startup-id systemctl hybrid-sleep, mode "default"

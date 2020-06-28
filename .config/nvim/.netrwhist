@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/HDD/Documents/FCUP/6_Ano/notes/jls_square_2/data'
 let g:netrw_dirhist_6='/home/mauricioquintela/.oh-my-zsh'
 let g:netrw_dirhist_5='/home/mauricioquintela/.config/kitty'
 let g:netrw_dirhist_4='/home/mauricioquintela/Scripts/X11'
