@@ -408,9 +408,9 @@ label-padding-left = 0
 [module/date]
 type = internal/date
 interval = 5
-
 date =
 date-alt = " %Y-%m-%d"
+#click-right = cal | convert -background black -undercolor black -fill white label:@- cal.png && sxiv -N wttr -Z -g 115x127 -b cal.png &
 
 time = %H:%M
 time-alt = %H:%M:%S
@@ -467,7 +467,10 @@ label-underline = #4bffdc
 [module/openweathermap-simple]
 type = custom/script
 exec = ~/.config/polybar/scripts/openweathermap-simple.sh
-interval = 600
+tail = true
+click-left = "kill -USR1 $(pgrep --oldest --parent %pid%)" 
+click-right = ~/.config/polybar/scripts/weather_report.sh &
+
 label-font = 5
 label-underline = #4bffdc
 

@@ -306,6 +306,7 @@ assign [class="Thunderbird"] $ws9
 assign [class="Discord"] $ws10
 assign [class="qutebrowser"] $ws3
 for_window [class="(?i)sxiv" instance="xkcd"] floating enable 
+for_window [class="(?i)sxiv" instance="wttr"] floating enable 
 #zoom shit
 for_window [class="(?i)Zoom" title="Settings"] floating enable 
 for_window [class="(?i)Zoom" title="Participants"] floating enable 
