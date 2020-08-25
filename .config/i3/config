@@ -105,10 +105,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume $(pacmd
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute $(pacmd list-sinks | awk -F ' ' '{print $3}' | sed -sn 2p) toggle"
 
 # Player controls 
-bindsym XF86AudioPlay exec --no-startup-id playerctl -p clementine play-pause
-bindsym XF86AudioNext exec --no-startup-id playerctl -p clementine next
-bindsym XF86AudioPrev exec --no-startup-id playerctl -p clementine previous
-bindsym XF86AudioStop exec --no-startup-id playerctl -p clementine stop
+bindsym XF86AudioPlay exec --no-startup-id playerctl -i smplayer play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl -i smplayer next
+bindsym XF86AudioPrev exec --no-startup-id playerctl -i smplayer previous
+bindsym XF86AudioStop exec --no-startup-id playerctl -i smplayer stop
 
 # Screen brightness controls
 bindsym $mod+KP_Add exec --no-startup-id light -A 5 
@@ -339,9 +339,9 @@ set $mode_shutdown [Enter] Shutdown, [Escape] Cancel
 
 mode "$mode_system" {
     #bindsym l exec --no-startup-id ~/.config/i3/scripts/scrlock.sh, mode "default"
-    bindsym l exec --no-startup-id "i3lock-fancy-rapid 5 3", mode "default"
-    bindsym Shift+l exec --no-startup-id i3lock, mode "default"
-    bindsym s exec --no-startup-id "systemctl suspend", mode "default"
+    bindsym l exec --no-startup-id "i3lock -c 000000", mode "default"
+    bindsym Shift+l exec --no-startup-id "i3lock -c 000000", mode "default"
+    bindsym s exec --no-startup-id "i3lock -c 000000; sleep 1 && systemctl suspend", mode "default"
 
 #    bindsym s exec --no-startup-id i3lock-fancy; exec systemctl suspend, mode "default"
     bindsym h exec --no-startup-id systemctl hybrid-sleep, mode "default"
@@ -475,7 +475,7 @@ mode $quicklauncher {
 	bindsym n exec --no-startup-id thunar, mode "default"
 	bindsym l exec --no-startup-id i3-msg "[class=(L|l)yx] focus" || lyx, mode "default"
 	bindsym t exec --no-startup-id i3-msg "[class=(T|t)hunderbird] focus" || thunderbird-beta, mode "default"
-#	bindsym Shift+t exec --no-startup-id tor-browser, mode "default"
+	bindsym Shift+t exec --no-startup-id tor-browser, mode "default"
 	bindsym s exec --no-startup-id syncthing, mode "default"
 	bindsym z exec --no-startup-id zotero, mode "default"
 	bindsym r exec --no-startup-id kitty -e ranger, mode "default"
@@ -534,8 +534,8 @@ exec --no-startup-id clipit
 #randomizer
 #exec --no-startup-id ~/.config/i3/scripts/background
 #static
-exec --no-startup-id "feh --no-fehbg --bg-max ~/2.jpg"
-
+#exec --no-startup-id "feh --no-fehbg --bg-max ~/2.jpg"
+exec --no-startup-id ~/.fehbg
 #blurme
 #exec --no-startup-id ~/.config/i3/scripts/blurme
 

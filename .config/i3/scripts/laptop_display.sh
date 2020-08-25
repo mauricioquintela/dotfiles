@@ -1,7 +1,3 @@
-#!/bin/sh
-~/.config/polybar/launch.sh
-~/.fehbg
-
 #!/bin/zsh
 input_mon=$(xrandr | grep eDP | awk '{print $1}')
 if [ "$input_mon" = "eDP1" ]; then

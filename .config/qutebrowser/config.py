@@ -47,12 +47,12 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # used by prepending the search engine name to the search term, e.g.
 # `:open google qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}','sx': 'https://searx.pofilo.fr/search?q={}','ddg': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'lg': 'https://libgen.lc/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def' ,'rx': 'https://arxiv.org/search/?query={}&searchtype=all&source=header', 'wm': 'https://reference.wolfram.com/search/?q={}', '13': 'https://1337.root.yt/sort-search/{}/time/desc/1/', 'tdm': 'https://technicaldeathmetal.org/?s={}&search=Search', 'imdb': 'https://www.imdb.com/find?q={}&ref_=nv_sr_sm','aur': 'https://aur.archlinux.org/packages/?O=0&K={}', 'ma': 'https://www.metal-archives.com/search?searchString={}&type=band_name', 'tl': 'https://www.torrentleech.org/torrents/browse/index/query/{}', 'conj': 'https://conjuga-me.net/verbo-{}'}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}','sx': 'https://searx.pofilo.fr/search?q={}','ddg': 'https://duckduckgo.com/?q={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'yt': 'https://www.youtube.com/results?search_query={}', 'lg': 'https://libgen.lc/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def' ,'rx': 'https://arxiv.org/search/?query={}&searchtype=all&source=header', 'wm': 'https://reference.wolfram.com/search/?q={}', '13': 'https://1337.root.yt/sort-search/{}/time/desc/1/', 'tdm': 'https://technicaldeathmetal.org/?s={}&search=Search', 'imdb': 'https://www.imdb.com/find?q={}&ref_=nv_sr_sm','aur': 'https://aur.archlinux.org/packages/?O=0&K={}', 'ma': 'https://www.metal-archives.com/search?searchString={}&type=band_name', 'tl': 'https://www.torrentleech.org/torrents/browse/index/query/{}', 'conj': 'https://conjuga-me.net/verbo-{}', 'gc': 'https://getcomics.info/?s={}'}
 
 # Bindings for normal mode
 #config.bind('<Ctrl+Shift+f>', 'hint links spawn --detach mpv --ytdl-format="((bestvideo[height<=?1080][vcodec!=vp9]/bestvideo[height<=?1080])+bestaudio)/best" --ytdl-raw-options="external-downloader=aria2c" --ytdl-raw-options-append="external-downloader-args=\'-c -j 5 -x 4 -s 5 -k 10M\'" --profile=big-cache --keep-open  --force-window \'{hint-url}\'')
 #config.bind('<Ctrl+Shift+p>', 'hint links spawn --detach mpv --ytdl-format="((bestvideo[height<=?1080][vcodec!=vp9]/bestvideo[height<=?1080])+bestaudio)/best" --ytdl-raw-options="external-downloader=aria2c" --ytdl-raw-options-append="external-downloader-args=\'-c -j 5 -x 4 -s 5 -k 10M\'" --profile=big-cache --loop-playlist --force-window \'{hint-url}\'')
-config.bind('<Ctrl+Shift+f>', 'hint links spawn --detach smplayer -fullscreen \'{hint-url}\'')
+config.bind('<Ctrl+Shift+f>', 'hint all spawn --detach smplayer \'{hint-url}\'')
 config.bind('<Ctrl+Shift+a>', 'hint links spawn --detach waterfox-current https://sci-hub.se/\'{hint-url}\'')
 config.bind('<Ctrl+Alt+a>', 'hint links spawn --detach waterfox-current \'{hint-url}\'')
 config.bind('<Ctrl+R>', 'config-cycle content.user_stylesheets "~/.config/qutebrowser/css/apprentice-all-sites.css" "~/.config/qutebrowser/css/darculized-all-sites.css" "~/.config/qutebrowser/css/gruvbox-all-sites.css" "~/.config/qutebrowser/css/solarized-dark-all-sites.css" ""')
@@ -673,7 +673,7 @@ c.content.headers.do_not_track = True
 ## User agent to send. Unset to send the default. Note that the value
 ## read from JavaScript is always the global value.
 ## Type: String
-# c.content.headers.user_agent = None
+c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0"
 
 ## Enable host blocking.
 ## Type: Bool

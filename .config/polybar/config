@@ -60,7 +60,7 @@ font-5 = IosevkaNerdFont
 
 modules-left = i3 xwindow
 #modules-right = xkeyboard filesystem xbacklight pulseaudio memory cpu signal-str down-speed down-speed_eth up-speed up-speed_eth kdeconnect battery temperature openweathermap-fullfeatured date powermenu
-modules-right = xkeyboard filesystem xbacklight pulseaudio memory cpu updates-arch-combined signal-str down-speed down-speed_eth up-speed up-speed_eth kdeconnect battery temperature openweathermap-simple date powermenu
+modules-right = xkeyboard filesystem xbacklight pulseaudio memory cpu updates-arch-combined rss signal-str down-speed down-speed_eth up-speed up-speed_eth kdeconnect battery temperature openweathermap-simple date powermenu
 
 tray-position = right
 tray-padding = 0 
@@ -512,7 +512,7 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 1000
+animation-charging-framerate = 3000
 
 animation-discharging-4 = 
 animation-discharging-3 = 
@@ -520,7 +520,7 @@ animation-discharging-2 = 
 animation-discharging-1 = 
 animation-discharging-0 = 
 animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 1000
+animation-discharging-framerate = 3000
 
 
 [module/temperature]
@@ -555,6 +555,15 @@ type = custom/script
 exec = "~/.config/polybar/scripts/polybar-kdeconnect.sh -d"
 format-underline = #42d1f4
 tail = true
+
+[module/rss]
+type = custom/script  
+exec = "~/.config/polybar/scripts/rss_icon.sh"  
+
+format-underline = #42d1f4
+click-left = "~/.config/polybar/scripts/rss_manjaro.sh &"
+
+
 
 [module/system-nvidia-smi]
 type = custom/script

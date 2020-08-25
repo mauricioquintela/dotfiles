@@ -24,14 +24,16 @@ get_icon() {
 }
 
 
-KEY="dadf8578fc8561a106c56c6185b22ab6"
-CITY="Caminha,PT"
-UNITS="metric"
-SYMBOL="°C"
-
-API="https://api.openweathermap.org/data/2.5"
 
 while true; do
+	KEY="dadf8578fc8561a106c56c6185b22ab6"
+	CITY="Caminha,PT"
+	#CITY="Porto,PT"
+	#CITY="Aveiro,PT"
+	UNITS="metric"
+	SYMBOL="°C"
+
+	API="https://api.openweathermap.org/data/2.5"
 	if [ -n "$CITY" ]; then
 		if [ "$CITY" -eq "$CITY" ] 2>/dev/null; then
 			CITY_PARAM="id=$CITY"
@@ -56,6 +58,8 @@ while true; do
 		weather_icon=$(echo "$weather" | jq -r ".weather[0].icon")
 		rm -f ~/.config/polybar/scripts/weather.png
 		curl -s wttr.in/caminha_portugal.png --output ~/.config/polybar/scripts/weather.png 2>/dev/null
+		#curl -s wttr.in/porto_portugal.png --output ~/.config/polybar/scripts/weather.png 2>/dev/null
+		#curl -s wttr.in/aveiro_portugal.png --output ~/.config/polybar/scripts/weather.png 2>/dev/null
 		echo "$(get_icon "$weather_icon")""$weather_temp$SYMBOL"
 	fi
 	sleep 1800 &
