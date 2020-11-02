@@ -89,7 +89,7 @@ show_menu () {
 			kdeconnect-cli --send-sms "$message" --destination "$recipient" -d $DEV_ID ;;
 		*'Refresh' )
 			kdeconnect-cli --refresh;;
-		#              *'Unpair' ) qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID" org.kde.kdeconnect.device.unpair
+		#		*'Unpair' ) qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID" org.kde.kdeconnect.device.unpair
 		esac
 	}
 
@@ -104,7 +104,7 @@ show_rmenu () {
 show_pmenu () {
 	menu="$(rofi -sep "|" -dmenu -i -p "$DEV_NAME" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH -hide-scrollbar -line-padding 1 -padding 20 -lines 1 <<< "Pair Device")"
 	case "$menu" in
-		*'Pair Device') qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID" org.kde.kdeconnect.device.requestPair
+		*'Pair Device') qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$DEV_ID" org.kde.kdeconnect.device.requestPair;;
 	esac
 }
 
@@ -112,7 +112,7 @@ show_pmenu2 () {
 	menu="$(rofi -sep "|" -dmenu -i -p "$1 has sent a pairing request" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -theme $THEME -width $WIDTH_WIDE -hide-scrollbar -line-padding 4 -padding 20 -lines 2 <<< "Accept|Reject")"
 	case "$menu" in
 		*'Accept') qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$2" org.kde.kdeconnect.device.acceptPairing ;;
-		*) qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$2" org.kde.kdeconnect.device.rejectPairing
+		*) qdbus org.kde.kdeconnect "/modules/kdeconnect/devices/$2" org.kde.kdeconnect.device.rejectPairing;;
 	esac
 
 }
@@ -125,7 +125,7 @@ get_icon () {
 	fi
 	case $1 in
 		"-1")     ICON="%{F$COLOR_DISCONNECTED}$icon%{F-}" ;;
-		#    "-2")     ICON="%{F$COLOR_NEWDEVICE}$icon%{F-}" ;;
+#		"-2")     ICON="%{F$COLOR_NEWDEVICE}$icon%{F-}" ;;
 		"-2") ICON=" ";;
 		5*)     ICON="%{F$COLOR_BATTERY_50}$icon%{F-}" ;;
 		6*)     ICON="%{F$COLOR_BATTERY_60}$icon%{F-}" ;;

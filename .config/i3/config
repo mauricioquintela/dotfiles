@@ -339,8 +339,8 @@ set $mode_shutdown [Enter] Shutdown, [Escape] Cancel
 
 mode "$mode_system" {
     #bindsym l exec --no-startup-id ~/.config/i3/scripts/scrlock.sh, mode "default"
-    bindsym l exec --no-startup-id "i3lock -c 000000", mode "default"
-    bindsym Shift+l exec --no-startup-id "i3lock -c 000000", mode "default"
+    bindsym l exec --no-startup-id "i3lock-fancy-rapid 5 3", mode "default"
+    bindsym Shift+l exec --no-startup-id "i3lock-fancy-rapid 5 3", mode "default"
     bindsym s exec --no-startup-id "i3lock -c 000000; sleep 1 && systemctl suspend", mode "default"
 
 #    bindsym s exec --no-startup-id i3lock-fancy; exec systemctl suspend, mode "default"
@@ -441,14 +441,16 @@ mode "$mode_gaps_outer" {
 }
 
 
-set $displayMode "Set display mode: [V]ga [L]aptop [H]dmi"
+set $displayMode "Set display mode: [V]ga [L]aptop [H]dmi [B]oth"
 set $hdmi_side "Side of HDMI monitor: [L]eft [R]ight"
 set $vga_side "Side of VGA monitor: [L]eft [R]ight"
+set $both_side "Configuration: [1]H-L-V [2]V-L-H"
 
 bindsym $mod+m mode $displayMode
 mode $displayMode {
     bindsym v mode $vga_side
     bindsym h mode $hdmi_side
+    bindsym b mode $both_side
     bindsym l exec --no-startup-id ~/.config/i3/scripts/laptop_display.sh, mode "default"
 
     bindsym Return mode "default"
@@ -468,10 +470,17 @@ mode $hdmi_side {
 	bindsym Escape mode "default"
 }
 
+mode $both_side {
+	bindsym 1 exec --no-startup-id ~/.config/i3/scripts/h-l-v_display.sh, mode "default"
+	bindsym 2 exec --no-startup-id ~/.config/i3/scripts/v-l-h_display.sh, mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
 set $quicklauncher "Run [f] [q] [r/Ctrl+r] [l] [m] [t] [n] [z] [d]"
 bindsym $mod+x mode $quicklauncher
 mode $quicklauncher {
-	bindsym f exec --no-startup-id i3-msg "[class=(W|w)aterfox-current] focus" || waterfox-current, mode "default"
+	bindsym f exec --no-startup-id i3-msg "[class=(F|f)irefox] focus" || MOZ_X11_EGL=1 firefox-developer-edition, mode "default"
 	bindsym n exec --no-startup-id thunar, mode "default"
 	bindsym l exec --no-startup-id i3-msg "[class=(L|l)yx] focus" || lyx, mode "default"
 	bindsym t exec --no-startup-id i3-msg "[class=(T|t)hunderbird] focus" || thunderbird-beta, mode "default"
@@ -480,7 +489,7 @@ mode $quicklauncher {
 	bindsym z exec --no-startup-id zotero, mode "default"
 	bindsym r exec --no-startup-id kitty -e ranger, mode "default"
 	bindsym Ctrl+r exec --no-startup-id kitty -e nnn, mode "default"
-	bindsym d exec --no-startup-id waterfox-current https://drive.google.com/drive/u/0/shared-drives, mode "default"
+	bindsym d exec --no-startup-id MOZ_X11_EGL=1 firefox-developer-edition https://drive.google.com/drive/u/0/shared-drives, mode "default"
 #	bindsym Shift+r exec --no-startup-id i3-msg "[class=(T|t)eamviewer] focus" || teamviewer, mode "default"
 	bindsym m exec --no-startup-id mathematica, mode "default"
 #	bindsym c exec --no-startup-id cheese, mode "default"
@@ -551,6 +560,8 @@ exec_always --no-startup-id xinput set-prop "ELAN0501:00 04F3:3019 Touchpad" "li
 #swap caps and esc
 #exec_always --no-startup-id xmodmap ~/.Xmodmap
 
+#autolock after X seconds
+exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 900 "i3lock-fancy-rapid 5 3" ""
 
 
 # vim:filetype=i3

@@ -59,8 +59,8 @@ font-4 = WeatherIcons-Regular:size=20;2
 font-5 = IosevkaNerdFont
 
 modules-left = i3 xwindow
-#modules-right = xkeyboard filesystem xbacklight pulseaudio memory cpu signal-str down-speed down-speed_eth up-speed up-speed_eth kdeconnect battery temperature openweathermap-fullfeatured date powermenu
 modules-right = xkeyboard filesystem xbacklight pulseaudio memory cpu updates-arch-combined rss signal-str down-speed down-speed_eth up-speed up-speed_eth kdeconnect battery temperature openweathermap-simple date powermenu
+#modules-right = xkeyboard filesystem xbacklight pulseaudio memory cpu updates-arch-combined rss signal-str down-speed down-speed_eth up-speed up-speed_eth  battery temperature openweathermap-simple date powermenu
 
 tray-position = right
 tray-padding = 0 
@@ -487,14 +487,14 @@ type = internal/battery
 battery = BAT1
 adapter = ACAD
 full-at = 98
-
+label-font=2
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+format-full-prefix = 
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
