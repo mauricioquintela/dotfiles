@@ -512,7 +512,7 @@ exec_always --no-startup-id "kill -15 $(pidof picom); sleep 3 && picom -bf"
 exec --no-startup-id xfce4-power-manager
 
 #blue lights hurt eyes at night
-exec --no-startup-id redshift-qt
+exec --no-startup-id redshift-qt -l 41.14961:-8.61099
 
 #bluetooth
 exec --no-startup-id blueman-applet 
