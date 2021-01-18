@@ -35,6 +35,9 @@ bindsym $mod+Ctrl+x exec --no-startup-id sxiv -N xkcd -q "$(find /HDD/git/xkcd/a
 #blank tiled window
 bindsym $mod+Ctrl+b exec --no-startup-id i3-msg open
 
+#dmenu youtube search 
+bindsym $mod+Ctrl+y exec --no-startup-id /home/mauricioquintela/Scripts/myyt/dmenyt
+
 #brightness min
 bindsym $mod+Ctrl+l exec --no-startup-id light -S 1
 bindsym $mod+Ctrl+Shift+l exec --no-startup-id light -S 188

@@ -4,6 +4,7 @@
 ##   qute://help/settings.html
 config.load_autoconfig()
 
+
 #config.set("content.user_stylesheets", '/home/mauricioquintela/.config/qutebrowser/userContent.css')
 c.content.host_blocking.enabled = True
 
@@ -64,7 +65,6 @@ c.content.proxy = 'http://localhost:8118/'
 #general stuff
 c.editor.command = ["kitty", "-title", "scratchpad", "-geometry", "86x24+40+60", "-e", "nvim", "-f", "{}"]
 c.downloads.location.directory = '/HDD/Downloads/'
-
 
 #c.qt.args = ["blink-settings=darkMode=4,darkModeImagePolicy=2"]
 c.colors.webpage.prefers_color_scheme_dark = True

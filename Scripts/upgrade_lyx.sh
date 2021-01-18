@@ -40,6 +40,7 @@ if {[ "$(git pull origin master | grep -c "Already up to date")" -ge 1 ]}; then
 	fi
 else 
 	printf "\n\nDo you wish to update LyX?\n"
+	touch update_needed
 	select yn in "Yes" "No"
 		case $yn in
 			Yes) rm -rf update_needed
@@ -57,8 +58,7 @@ else
 					cd $local
 				fi
 				return;;
-			No) touch update_needed
-				rm -rf sudo_needed
+			No) rm -rf sudo_needed
 				cd $local
 				echo "Update in queue! Run \"uplyx\" again to update!"
 				return;;
