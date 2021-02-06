@@ -71,6 +71,9 @@ bindsym $mod+Shift+Right move right
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth no
 bindsym $mod+b workspace back_and_forth
+bindsym Control+KP_Insert workspace back_and_forth
+bindsym Control+mod2+KP_0 workspace back_and_forth
+
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
@@ -103,6 +106,9 @@ bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
 # Pulse Audio controls
+bindsym Control+Shift+KP_Add exec --no-startup-id "pactl set-sink-volume $(pacmd list-sinks | awk -F ' ' '{print $3}' | sed -sn 2p) +5%"
+bindsym Control+Shift+KP_Subtract exec --no-startup-id "pactl set-sink-volume $(pacmd list-sinks | awk -F ' ' '{print $3}' | sed -sn 2p) -5%"
+
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume $(pacmd list-sinks | awk -F ' ' '{print $3}' | sed -sn 2p) +5%"
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume $(pacmd list-sinks | awk -F ' ' '{print $3}' | sed -sn 2p) -5%"
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute $(pacmd list-sinks | awk -F ' ' '{print $3}' | sed -sn 2p) toggle"
@@ -191,7 +197,7 @@ bindsym $mod+mod2+KP_6 workspace $ws6
 bindsym $mod+mod2+KP_7 workspace $ws7
 bindsym $mod+mod2+KP_8 workspace $ws8
 bindsym $mod+mod2+KP_9 workspace $ws9
-bindsym $mod+mod2+KP_0 workspace $ws10
+#bindsym $mod+mod2+KP_0 workspace $ws10
 
 bindsym $mod+KP_End workspace $ws1
 bindsym $mod+KP_Down workspace $ws2
@@ -202,7 +208,7 @@ bindsym $mod+KP_Right workspace $ws6
 bindsym $mod+KP_Home workspace $ws7
 bindsym $mod+KP_Up workspace $ws8
 bindsym $mod+KP_Prior workspace $ws9
-bindsym $mod+KP_Insert workspace $ws10
+#bindsym $mod+KP_Insert workspace $ws10
 
 bindsym Control+mod2+KP_1 workspace $ws1
 bindsym Control+mod2+KP_2 workspace $ws2
@@ -213,7 +219,7 @@ bindsym Control+mod2+KP_6 workspace $ws6
 bindsym Control+mod2+KP_7 workspace $ws7
 bindsym Control+mod2+KP_8 workspace $ws8
 bindsym Control+mod2+KP_9 workspace $ws9
-bindsym Control+mod2+KP_0 workspace $ws10
+#bindsym Control+mod2+KP_0 workspace $ws10
 
 bindsym Control+KP_End workspace $ws1
 bindsym Control+KP_Down workspace $ws2
@@ -224,7 +230,7 @@ bindsym Control+KP_Right workspace $ws6
 bindsym Control+KP_Home workspace $ws7
 bindsym Control+KP_Up workspace $ws8
 bindsym Control+KP_Prior workspace $ws9
-bindsym Control+KP_Insert workspace $ws10
+#bindsym Control+KP_Insert workspace $ws10
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1

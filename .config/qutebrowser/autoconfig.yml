@@ -9,8 +9,12 @@ settings:
   auto_save.session:
     global: true
   colors.webpage.bg:
-    global: black
+    global: null
+  colors.webpage.darkmode.contrast:
+    global: 0.0
   colors.webpage.darkmode.enabled:
+    global: false
+  colors.webpage.darkmode.grayscale.all:
     global: false
   content.notifications:
     https://1337.root.yt: true

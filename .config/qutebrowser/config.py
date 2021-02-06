@@ -6,7 +6,10 @@ config.load_autoconfig()
 
 
 #config.set("content.user_stylesheets", '/home/mauricioquintela/.config/qutebrowser/userContent.css')
-c.content.host_blocking.enabled = True
+#c.content.host_blocking.enabled = True
+c.content.blocking.enabled = True
+c.content.blocking.method = 'adblock' 
+c.content.blocking.adblock.lists
 
 #+begin_src python
 import sys, os
@@ -14,10 +17,10 @@ import sys, os
 #config.source("jblock/jblock/integrations/qutebrowser.py")
 ##+end_src
 #block shit
-c.content.host_blocking.lists.append( str(config.configdir) + "/new_hosts.txt")
-c.content.host_blocking.lists.append( str(config.configdir) + "/superhosts.deny")
+c.content.blocking.hosts.lists.append( str(config.configdir) + "/new_hosts.txt")
+c.content.blocking.hosts.lists.append( str(config.configdir) + "/superhosts.deny")
 config.set(
-        "content.host_blocking.lists",
+        "content.blocking.hosts.lists",
         [
             "https://www.malwaredomainlist.com/hostslist/hosts.txt",
             "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext",
@@ -673,7 +676,7 @@ c.content.headers.do_not_track = True
 ## User agent to send. Unset to send the default. Note that the value
 ## read from JavaScript is always the global value.
 ## Type: String
-c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0"
+c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0"
 
 ## Enable host blocking.
 ## Type: Bool
