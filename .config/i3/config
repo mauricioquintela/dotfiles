@@ -75,6 +75,8 @@ bindsym Control+KP_Insert workspace back_and_forth
 bindsym Control+mod2+KP_0 workspace back_and_forth
 
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+bindsym Control+Shift+KP_Insert workspace back_and_forth
+bindsym Control+Shift+mod2+KP_0 workspace back_and_forth
 
 # split orientation
 bindsym $mod+h split h;exec --no-startup-id notify-send --expire-time=1000 'tile horizontally'
@@ -503,7 +505,7 @@ mode $quicklauncher {
 	bindsym m exec --no-startup-id mathematica, mode "default"
 #	bindsym c exec --no-startup-id cheese, mode "default"
 #	bindsym q exec --no-startup-id qutebrowser, mode "default"
-	bindsym q exec --no-startup-id i3-msg "[class=(Q|q)utebrowser] focus" || qutebrowser --qt-flag ignore-gpu-blacklist --qt-flag enable-gpu-rasterization --qt-flag enable-native-gpu-memory-buffers --qt-flag num-raster-threads=8, mode "default"
+	bindsym q exec --no-startup-id i3-msg "[class=(Q|q)utebrowser] focus" || qutebrowser --qt-flag ignore-gpu-blocklist --qt-flag enable-gpu-rasterization --qt-flag enable-native-gpu-memory-buffers --qt-flag num-raster-threads=8, mode "default"
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }

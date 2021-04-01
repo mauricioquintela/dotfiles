@@ -6,6 +6,14 @@
 
 config_version: 2
 settings:
+  aliases:
+    global:
+      paywall: open https://12ft.io/proxy?q={url}
+      q: close
+      qa: quit
+      w: session-save
+      wq: quit --save
+      wqa: quit --save
   auto_save.session:
     global: true
   colors.webpage.bg:
@@ -16,7 +24,7 @@ settings:
     global: false
   colors.webpage.darkmode.grayscale.all:
     global: false
-  content.notifications:
+  content.notifications.enabled:
     https://1337.root.yt: true
     https://play.pokemonshowdown.com: true
     https://web.whatsapp.com: true
@@ -30,3 +38,5 @@ settings:
     global: null
   scrolling.smooth:
     global: true
+  window.title_format:
+    global: '{perc}{current_title}{title_sep}qutebrowser'

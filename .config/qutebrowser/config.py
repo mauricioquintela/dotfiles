@@ -55,11 +55,18 @@ c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}','sx': 'https://
 
 # Bindings for normal mode
 #config.bind('<Ctrl+Shift+f>', 'hint links spawn --detach mpv --ytdl-format="((bestvideo[height<=?1080][vcodec!=vp9]/bestvideo[height<=?1080])+bestaudio)/best" --ytdl-raw-options="external-downloader=aria2c" --ytdl-raw-options-append="external-downloader-args=\'-c -j 5 -x 4 -s 5 -k 10M\'" --profile=big-cache --keep-open  --force-window \'{hint-url}\'')
-#config.bind('<Ctrl+Shift+p>', 'hint links spawn --detach mpv --ytdl-format="((bestvideo[height<=?1080][vcodec!=vp9]/bestvideo[height<=?1080])+bestaudio)/best" --ytdl-raw-options="external-downloader=aria2c" --ytdl-raw-options-append="external-downloader-args=\'-c -j 5 -x 4 -s 5 -k 10M\'" --profile=big-cache --loop-playlist --force-window \'{hint-url}\'')
-config.bind('<Ctrl+Shift+f>', 'hint all spawn --detach smplayer \'{hint-url}\'')
+
+config.bind('<Ctrl+Shift+f>', 'hint links spawn --detach mpv --ytdl-format="((bestvideo[height<=?1080][vcodec!=vp9]/bestvideo[height<=?1080])+bestaudio)/best" --ytdl-raw-options=add-header="Cookie:",external-downloader=aria2c,external-downloader-args="-c -j 5 -x 4 -s 5 -k 10M" --profile=big-cache --loop-playlist --force-window \'{hint-url}\'')
+
+config.bind('<Ctrl+Shift+c>', 'hint links spawn --detach mpv --ytdl-format="((bestvideo[height<=?1080][vcodec!=vp9]/bestvideo[height<=?1080])+bestaudio)/best" --ytdl-raw-options=add-header="Cookie:",external-downloader=aria2c,external-downloader-args="-c -j 5 -x 4 -s 5 -k 10M" --profile=big-cache --loop-playlist --force-window \'{url}\'')
+
+
+
+#config.bind('<Ctrl+Shift+f>', 'hint all spawn --detach smplayer \'{hint-url}\'')
+#config.bind('<Ctrl+Shift+c>', 'spawn --detach smplayer \'{url}\'')
+
 config.bind('<Ctrl+Shift+a>', 'hint links spawn --detach firefox-developer-edition https://sci-hub.se/\'{hint-url}\'')
 config.bind('<Ctrl+Alt+a>', 'hint links spawn --detach firefox-developer-edition \'{hint-url}\'')
-#config.bind('<Ctrl+R>', 'config-cycle content.user_stylesheets "~/.config/qutebrowser/css/apprentice-all-sites.css" "~/.config/qutebrowser/css/darculized-all-sites.css" "~/.config/qutebrowser/css/gruvbox-all-sites.css" "~/.config/qutebrowser/css/solarized-dark-all-sites.css" ""')
 
 
 c.content.proxy = 'http://localhost:8118/'
@@ -70,7 +77,7 @@ c.editor.command = ["kitty", "-title", "scratchpad", "-geometry", "86x24+40+60",
 c.downloads.location.directory = '/HDD/Downloads/'
 
 #c.qt.args = ["blink-settings=darkMode=4,darkModeImagePolicy=2"]
-c.colors.webpage.prefers_color_scheme_dark = True
+#c.colors.webpage.prefers_color_scheme_dark = True
 
 
 ## This is here so configs done via the GUI are still loaded.
